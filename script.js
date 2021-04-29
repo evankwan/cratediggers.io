@@ -1,8 +1,8 @@
 const url = new URL('http://ws.audioscrobbler.com/2.0/');
 
 url.search = new URLSearchParams({
-	method: 'tag.getTopArtists',
-	tag: 'coding',
+	method: 'artist.getInfo',
+	artist: 'cher',
 	api_key: '3f350f5eaa519a05c6b21c5afc810ec0',
 	format: 'json'
 })
@@ -26,6 +26,7 @@ fetch(url)
 // autocomplete widget - get artist data from API while user types and allow user to select from drop down to search for similar artists
 // display titles of top 5 tracks of recommended artist
 // explore option - display 10-20 tags on the landing page. when the user clicks on a tag, display the top artists for that tag
+// add artist images using the GIPHY API
 
 // pseudo code
 
@@ -49,6 +50,10 @@ fetch(url)
 
 // clear the <ul>
 
-// create <li> elements for each similar artist using forEach() and append to the page on the <ul>
+// using forEach() create <li> elements for each similar artist and get bio by making another API call using the artist.getInfo method
+
+// append the recommended artists to the page on the <ul>
 
 //// STRETCH GOAL - display the top 5 tracks of recommended artist when the user interacts with the displayed artist
+
+//// STRETCH GOAL - add gifs to each artist in the recommended artist results
