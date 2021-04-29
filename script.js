@@ -1,19 +1,19 @@
 const url = new URL('http://ws.audioscrobbler.com/2.0/');
 
 url.search = new URLSearchParams({
-  method: 'tag.getTopArtists',
-  tag: 'coding',
-  api_key: '3f350f5eaa519a05c6b21c5afc810ec0',
-  format: 'json'
+	method: 'tag.getTopArtists',
+	tag: 'coding',
+	api_key: '3f350f5eaa519a05c6b21c5afc810ec0',
+	format: 'json'
 })
 
 fetch(url)
-  .then( (response) => {
-    console.log(response)
-    return response.json();
-  }).then( (data) => {
-    console.log(data);
-  })
+	.then( (response) => {
+		console.log(response)
+		return response.json();
+	}).then( (data) => {
+		console.log(data);
+	})
 
 // MVP is to display similar artist recommendations to the user
 // get user input for artist
