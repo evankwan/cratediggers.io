@@ -28,6 +28,35 @@ app.getArtistsInfo = (query, searchMethod) => {
 		})
 }
 
+const giphyURL = new URL('https://api.giphy.com/v1/gifs/search')
+
+app.getArtistPicture = (artist, query, artistContainer) => {
+	giphyURL.search = new URLSearchParams({
+		api_key: 'jGXNQaBmzgNmpV5vrHUt2lcq0QMg7F1s',
+		q: query,
+		limit: 1
+	})
+
+	fetch(giphyURL)
+		.then((response) => {
+			return response.json();
+		}).then((data) => {
+			console.log(data);
+			const picture = data.data[0].images.original.url;
+			app.displayArtistRecommendations(artist, picture, artistContainer);
+		});
+		
+}
+
+app.displayArtistRecommendations = (artist,picture, artistContainer) =>{
+	const artistInfo = `${artist.name} 
+			<img src="${picture}" alt="${artist.name}">
+			<a href="${artist.url}">check out their last.fm page</a> `
+	artistContainer.innerHTML = artistInfo;
+	resultsList.append(artistContainer);
+}
+
+
 app.displayArtistsInfo = (data, searchMethod) => {
 	let artistsResults;
 	if(searchMethod === 'artist.search'){
@@ -47,13 +76,12 @@ app.displayArtistsInfo = (data, searchMethod) => {
 			artistContainer.addEventListener('click', function() {
 				app.getArtistsInfo(this.textContent, 'artist.getSimilar');
 			})
+			artistContainer.innerHTML = artistInfo;
+			resultsList.append(artistContainer);
 		}else if(searchMethod === 'artist.getSimilar'){
-			artistInfo = `${artist.name} 
-			<a href="${artist.url}">check out their last.fm page</a> `
+			app.getArtistPicture(artist, artist.name, artistContainer);
 		}
-
-		artistContainer.innerHTML = artistInfo;
-		resultsList.append(artistContainer);
+		
 	})
 }
 
@@ -72,6 +100,9 @@ app.transformMain = () => {
 	// add the class to move header to top of screen
 	main.classList.add('bigMain');
 }
+
+
+
 
 
 app.init = () => {
