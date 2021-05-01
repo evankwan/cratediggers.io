@@ -39,6 +39,7 @@ app.displayArtistsInfo = (data, searchMethod) => {
 
 	artistsResults.forEach( (artist) => {
 		const artistContainer = document.createElement('li');
+		artistContainer.classList.add('artist')
 		let artistInfo;
 
 		if(searchMethod === 'artist.search'){
@@ -64,6 +65,14 @@ app.transformHeader = () => {
 	headerFlexContainer.classList.add('topPosition');
 }
 
+app.transformMain = () => {
+	// select the headerFlexContainer
+	const main = document.querySelector('main');
+
+	// add the class to move header to top of screen
+	main.classList.add('bigMain');
+}
+
 
 app.init = () => {
 	button.addEventListener('click', (event) => {
@@ -71,6 +80,7 @@ app.init = () => {
 
 		const searchValue = searchInput.value;
 		app.transformHeader();
+		app.transformMain();
 		app.getArtistsInfo(searchValue,'artist.search');
 	})
 }
