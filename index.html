@@ -3,18 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cratedigger</title>
+    <title>Cratedigger</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 	<header>
-        <h1>Cratedigger</h1>
-
-        <form>
-            <label for="search">Search for your favourite artist</label>
-            <input type="text" name="search" id="search">
-        
-            <button type="submit">Submit</button>
-        </form>
+        <div class="wrapper">
+            <div class="headerFlexContainer topPosition">
+                <h1>Cratedigger</h1>
+                <h2>Curated list of recommended artists</h2>
+            
+                <form>
+                    <label class="sr-only" for="search">Search for artist</label>
+                    <input type="text" name="search" class="search" id="search" placeholder="Search for artist...">
+            
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
 	</header>
 
     <main>
