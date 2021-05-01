@@ -28,7 +28,6 @@ app.getArtistsInfo = (query, searchMethod) => {
 		})
 }
 
-
 app.displayArtistsInfo = (data, searchMethod) => {
 	let artistsResults;
 	if(searchMethod === 'artist.search'){
@@ -57,12 +56,21 @@ app.displayArtistsInfo = (data, searchMethod) => {
 	})
 }
 
+app.transformHeader = () => {
+	// select the headerFlexContainer
+	const headerFlexContainer = document.querySelector('.headerFlexContainer');
+
+	// add the class to move header to top of screen
+	headerFlexContainer.classList.add('topPosition');
+}
+
 
 app.init = () => {
 	button.addEventListener('click', (event) => {
 		event.preventDefault();
 
 		const searchValue = searchInput.value;
+		app.transformHeader();
 		app.getArtistsInfo(searchValue,'artist.search');
 	})
 }

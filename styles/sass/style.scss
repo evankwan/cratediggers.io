@@ -5,12 +5,18 @@ header {
     background-image: url(../assets/headerBackground.jpg);
     background-position: center center;
     background-size: cover;
+    
     transition: all 1s ease;
+}
+
+.headerOverlay {
+    background-color: rgba(47, 42, 42, 0.649);
+    height: 100%;
+    width: 100%;
 }
 
 .headerFlexContainer {
     align-items: center;
-    background-color: rgba(47, 42, 42, 0.649);
     display: flex;
     flex-direction: column;
     height: 90vh;

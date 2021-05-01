@@ -253,11 +253,16 @@ header {
   transition: all 1s ease;
 }
 
+.headerOverlay {
+  background-color: rgba(47, 42, 42, 0.649);
+  height: 100%;
+  width: 100%;
+}
+
 .headerFlexContainer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(47, 42, 42, 0.649);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
