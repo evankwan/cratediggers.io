@@ -78,12 +78,20 @@ app.displayArtistsInfo = (data, searchMethod) => {
 	// initialize variable to hold the artist results
 	let artistsResults;
 
+	
+	console.log(data)
 	// checking for if we're displaying artist serach or artist recommendation and assigning the correct path to artistResults
 	if(searchMethod === 'artist.search'){
-		artistsResults = data.results.artistmatches.artist
+		if (data.results === undefined) {
+			dropdown.classList.remove('isActive');
+			artistsResults = [];
+		}else{
+			artistsResults = data.results.artistmatches.artist
+		}
 	} else if (searchMethod === 'artist.getSimilar'){
 		artistsResults = data.similarartists.artist
 	}
+	
 	
 	resultsList.innerHTML = '';
 
@@ -92,14 +100,26 @@ app.displayArtistsInfo = (data, searchMethod) => {
 	// loop through each artist and add to the page
 	artistsResults.forEach( (artist) => {
 		const artistContainer = document.createElement('li');
-		// artistContainer.classList.add('artist')
-		artistContainer.classList.add('dropdownItem');
-		artistContainer.innerHTML = `${artist.name}`;
-		artistContainer.addEventListener('click', function () {
-			app.getArtistsInfo(this.textContent, 'artist.getSimilar');
-			dropdown.classList.remove('isActive');
-		});
-		dropdownContent.append(artistContainer);
+		
+		
+		if (searchMethod === 'artist.search') {
+			artistContainer.classList.add('dropdownItem');
+			artistContainer.setAttribute('tabindex', '0');
+			artistContainer.innerHTML = `${artist.name}`;
+			artistContainer.addEventListener('click', function () {
+				app.getArtistsInfo(this.textContent, 'artist.getSimilar');
+				dropdown.classList.remove('isActive');
+			});
+			dropdownContent.append(artistContainer);
+		} else if (searchMethod === 'artist.getSimilar') {
+			artistContainer.classList.add('artist')
+			app.getArtistPicture(artist, artist.name, artistContainer);
+			app.transformHeader();
+			app.transformMain();
+		}
+
+		
+		
 		// let artistInfo;
 
 		// // if this is for an artist search
@@ -116,7 +136,6 @@ app.displayArtistsInfo = (data, searchMethod) => {
 		// 	resultsList.append(artistContainer);
 		// }else if(searchMethod === 'artist.getSimilar'){
 		// 	// if this is for an artist recommendation
-		// 	app.getArtistPicture(artist, artist.name, artistContainer);
 		// }
 		
 	})
@@ -149,7 +168,6 @@ app.debounce = (func, delay) => {
 			clearTimeout(timeoutID);
 		};
 		timeoutID = setTimeout(() => {
-			console.log('hello');
 			func.apply(null)
 		}, delay);
 	}
@@ -162,10 +180,10 @@ app.init = () => {
 		event.preventDefault();
 
 		const searchValue = searchInput.value;
-		app.transformHeader();
-		app.transformMain();
-		app.getArtistsInfo(searchValue,'artist.search');
+		app.getArtistsInfo(searchValue, 'artist.getSimilar');
+		dropdown.classList.remove('isActive');
 	})
+
 }
 
 app.init();

@@ -20,6 +20,7 @@ header {
     flex-direction: column;
     height: calc(100vh - 50px);
     justify-content: center;
+    min-height: 750px;
     transition: all 1s ease;
     width: 100%;
 }
@@ -27,8 +28,13 @@ header {
 .topPosition {
     flex-direction: row;
     height: 150px;
+    min-height: 150px;
     justify-content: space-between;
-
+    & > .formContainer{
+        align-items: flex-start;
+        align-self: flex-start;
+        padding-top: 50px;
+    }
     h1 {
         font-size: 3.5rem;
     }
@@ -61,7 +67,7 @@ h2 {
 form {
     align-items: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 760px;
 }
 
@@ -73,6 +79,9 @@ form {
     font-size: 2.5rem;
     padding: 5px;
     width: 80%;
+    &:focus{
+        outline:none;
+    }
 }
 
 button {
@@ -86,7 +95,51 @@ button {
     padding: 8px 15px 5px;
 }
 
-main{
+.formContainer{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+}
+
+.dropdown {
+    display: none;
+    width: 760px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.isActive {
+    display:flex;
+}
+
+.dropdownMenu {
+    width: 80%;
+    .dropdownItem {
+        background-color: rgba(255, 255, 255, 0.2);
+        list-style-type: none;
+        color: white;
+        padding: 10px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        &:hover,
+        &:focus{
+            border: 1px solid white;
+            outline: none;
+        }
+    }
+
+    .dropdownContent {
+        padding-left: 0;
+        margin: 0;
+        max-height: 200px;
+        overflow-y: scroll;
+    }
+}
+
+main {
     display:none;
 }
 
@@ -116,7 +169,6 @@ main{
         background-color: #f9f9f9;
         text-align: center;
         padding: 15px;
-        cursor: pointer;
         font-family: 'Crimson Text', serif;
     }
 }
