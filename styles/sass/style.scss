@@ -50,6 +50,10 @@ header {
     button {
         padding: 7px 15px 3px;
     }
+
+    & > .formContainer .dropdownItem {
+        background-color: rgb(79, 69, 62);
+    }
 }
 
 h1 {
@@ -79,6 +83,7 @@ form {
     font-size: 2.5rem;
     padding: 5px;
     width: 80%;
+
     &:focus{
         outline:none;
     }
@@ -93,6 +98,10 @@ button {
     font-size: 1.5rem;
     margin-left: 10px;
     padding: 8px 15px 5px;
+
+    &:focus {
+        border: 3px solid gold;
+    }
 }
 
 .formContainer{
@@ -140,12 +149,12 @@ button {
 }
 
 main {
-    display:none;
+    display: none;
 }
 
 .bigMain{
     display: block;
-    background-color: #e4e4e4;
+    background-color: rgba(108, 101, 89, 1);
     min-height: calc(100vh - 150px - 50px);
 }
 
@@ -161,15 +170,26 @@ main {
     
     .artist{
         display:flex;
-        justify-content:center;
+        justify-content:space-between;
         align-items:center;
         flex-direction: column;
         border-radius: 10px;
         box-shadow: 0 2px 5px 0 black;
-        background-color: #f9f9f9;
+        background-color: rgba(249, 249, 249, 1);
         text-align: center;
         padding: 15px;
         font-family: 'Crimson Text', serif;
+        font-size: 1.5rem;
+
+        a {
+            font-size: 1rem;
+            text-decoration: none;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid black;
+            color: rgba(171, 34, 23, 1);
+            border-radius: 3px;
+        }
     }
 }
 

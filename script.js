@@ -66,7 +66,7 @@ app.displayArtistRecommendations = (artist, picture, artistContainer) =>{
 			<div class="imageContainer">
 				<img src="${picture}" alt="${artist.name}">
 			</div>
-			<a href="${artist.url}">check out their last.fm page</a> `
+			<a href="${artist.url}" target="_blank">Check out their Last.fm page</a>`
 
 	// adding and appending to browser
 	artistContainer.innerHTML = artistInfo;
@@ -78,8 +78,6 @@ app.displayArtistsInfo = (data, searchMethod) => {
 	// initialize variable to hold the artist results
 	let artistsResults;
 
-	
-	console.log(data)
 	// checking for if we're displaying artist serach or artist recommendation and assigning the correct path to artistResults
 	if(searchMethod === 'artist.search'){
 		if (data.results === undefined) {
@@ -91,9 +89,6 @@ app.displayArtistsInfo = (data, searchMethod) => {
 	} else if (searchMethod === 'artist.getSimilar'){
 		artistsResults = data.similarartists.artist
 	}
-	
-	
-	resultsList.innerHTML = '';
 
 	dropdownContent.innerHTML = '';
 	dropdown.classList.add('isActive');
@@ -110,8 +105,18 @@ app.displayArtistsInfo = (data, searchMethod) => {
 				app.getArtistsInfo(this.textContent, 'artist.getSimilar');
 				dropdown.classList.remove('isActive');
 			});
+			artistContainer.addEventListener('blur', function () {
+				const dropdownItems = document.querySelectorAll('.dropdownItem');
+				
+				if (this === dropdownItems[dropdownItems.length - 1]) {
+					console.log('blur');
+					dropdown.classList.remove('isActive');
+				}
+			});
+
 			dropdownContent.append(artistContainer);
 		} else if (searchMethod === 'artist.getSimilar') {
+			resultsList.innerHTML = '';
 			artistContainer.classList.add('artist')
 			app.getArtistPicture(artist, artist.name, artistContainer);
 			app.transformHeader();
@@ -163,7 +168,7 @@ app.transformMain = () => {
 
 app.debounce = (func, delay) => {
 	let timeoutID;
-	return ()=>{
+	return () => {
 		if (timeoutID) {
 			clearTimeout(timeoutID);
 		};
@@ -176,6 +181,11 @@ app.debounce = (func, delay) => {
 
 app.init = () => {
 	searchInput.addEventListener('input', app.debounce(app.getArtistsInfo, 500));
+	searchInput.addEventListener('blur', function() {
+		if (this.blur && !button.focus) {
+			dropdown.classList.remove('isActive');
+		}
+	});
 	button.addEventListener('click', (event) => {
 		event.preventDefault();
 
