@@ -9,9 +9,9 @@ const resultsList = document.getElementById('results');
 // take in the search query and search method and run the API call to Last.fm
 app.getArtistsInfo = (query, searchMethod) => {
 	// initialize the url for last.fm API
-	const url = new URL('http://ws.audioscrobbler.com/2.0/');
+	const url = new URL('https://ws.audioscrobbler.com/2.0/');
 
-	// modify the serach parameters for last.fm API call
+	// modify the search parameters for last.fm API call
 	url.search = new URLSearchParams({
 		method: searchMethod,
 		artist: query,
@@ -58,7 +58,9 @@ app.getArtistPicture = (artist, query, artistContainer) => {
 app.displayArtistRecommendations = (artist, picture, artistContainer) =>{
 	// setting the HTML
 	const artistInfo = `${artist.name} 
-			<img src="${picture}" alt="${artist.name}">
+			<div class="imageContainer">
+				<img src="${picture}" alt="${artist.name}">
+			</div>
 			<a href="${artist.url}">check out their last.fm page</a> `
 
 	// adding and appending to browser
