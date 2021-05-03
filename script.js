@@ -5,9 +5,12 @@ const form = document.querySelector('form');
 const button = document.querySelector('button');
 const searchInput = document.querySelector('input[type=text]');
 const resultsList = document.getElementById('results');
+const dropdown = document.querySelector('.dropdown');
+const dropdownContent = document.querySelector('.dropdownContent');
 
 // take in the search query and search method and run the API call to Last.fm
-app.getArtistsInfo = (query, searchMethod) => {
+app.getArtistsInfo = (query = searchInput.value, searchMethod = 'artist.search') => {
+	
 	// initialize the url for last.fm API
 	const url = new URL('https://ws.audioscrobbler.com/2.0/');
 
@@ -27,6 +30,7 @@ app.getArtistsInfo = (query, searchMethod) => {
 		}).then((data) => {
 			app.displayArtistsInfo(data, searchMethod);
 		})
+
 }
 
 // get the artist's displayed on screen and find a gif to represent them
@@ -83,31 +87,42 @@ app.displayArtistsInfo = (data, searchMethod) => {
 	
 	resultsList.innerHTML = '';
 
+	dropdownContent.innerHTML = '';
+	dropdown.classList.add('isActive');
 	// loop through each artist and add to the page
 	artistsResults.forEach( (artist) => {
 		const artistContainer = document.createElement('li');
-		artistContainer.classList.add('artist')
-		let artistInfo;
+		// artistContainer.classList.add('artist')
+		artistContainer.classList.add('dropdownItem');
+		artistContainer.innerHTML = `${artist.name}`;
+		artistContainer.addEventListener('click', function () {
+			app.getArtistsInfo(this.textContent, 'artist.getSimilar');
+			dropdown.classList.remove('isActive');
+		});
+		dropdownContent.append(artistContainer);
+		// let artistInfo;
 
-		// if this is for an artist search
-		if(searchMethod === 'artist.search'){
-			artistInfo = artist.name;
+		// // if this is for an artist search
+		// if(searchMethod === 'artist.search'){
+		// 	artistInfo = artist.name;
 
-			// event listener for click on the artist container to get recommendation
-			artistContainer.addEventListener('click', function() {
-				app.getArtistsInfo(this.textContent, 'artist.getSimilar');
-			})
+		// 	// event listener for click on the artist container to get recommendation
+		// 	// artistContainer.addEventListener('click', function() {
+		// 	// 	app.getArtistsInfo(this.textContent, 'artist.getSimilar');
+		// 	// })
 
-			// add inner HTML and add to page
-			artistContainer.innerHTML = artistInfo;
-			resultsList.append(artistContainer);
-		}else if(searchMethod === 'artist.getSimilar'){
-			// if this is for an artist recommendation
-			app.getArtistPicture(artist, artist.name, artistContainer);
-		}
+		// 	// add inner HTML and add to page
+		// 	artistContainer.innerHTML = artistInfo;
+		// 	resultsList.append(artistContainer);
+		// }else if(searchMethod === 'artist.getSimilar'){
+		// 	// if this is for an artist recommendation
+		// 	app.getArtistPicture(artist, artist.name, artistContainer);
+		// }
 		
 	})
 }
+
+
 
 // transforms the header to a top search bar to make room for artists on the page
 app.transformHeader = () => {
@@ -127,7 +142,22 @@ app.transformMain = () => {
 	main.classList.add('bigMain');
 }
 
+app.debounce = (func, delay) => {
+	let timeoutID;
+	return ()=>{
+		if (timeoutID) {
+			clearTimeout(timeoutID);
+		};
+		timeoutID = setTimeout(() => {
+			console.log('hello');
+			func.apply(null)
+		}, delay);
+	}
+};
+
+
 app.init = () => {
+	searchInput.addEventListener('input', app.debounce(app.getArtistsInfo, 500));
 	button.addEventListener('click', (event) => {
 		event.preventDefault();
 
