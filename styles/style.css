@@ -245,6 +245,16 @@ html {
   width: 95%;
 }
 
+.imageContainer {
+  width: 250px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+
 header {
   background-image: url(../assets/headerBackground.jpg);
   background-position: center center;
@@ -359,16 +369,16 @@ main {
 .bigMain {
   display: block;
   background-color: #e4e4e4;
-  height: calc(100vh - 150px - 50px);
+  min-height: calc(100vh - 150px - 50px);
 }
 
 .results {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
-  -ms-grid-rows: (1fr)[2];
-      grid-template-rows: repeat(2, 1fr);
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
   grid-auto-rows: 1fr;
   grid-gap: 20px;
   list-style: none;
@@ -396,6 +406,8 @@ main {
   background-color: #f9f9f9;
   text-align: center;
   padding: 15px;
+  cursor: pointer;
+  font-family: 'Crimson Text', serif;
 }
 
 footer {

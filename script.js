@@ -16,7 +16,7 @@ app.getArtistsInfo = (query, searchMethod) => {
 		method: searchMethod,
 		artist: query,
 		api_key: '3f350f5eaa519a05c6b21c5afc810ec0',
-		limit: 10,
+		limit: 12,
 		format: 'json'
 	})
 
@@ -38,6 +38,7 @@ app.getArtistPicture = (artist, query, artistContainer) => {
 	giphyURL.search = new URLSearchParams({
 		api_key: 'jGXNQaBmzgNmpV5vrHUt2lcq0QMg7F1s',
 		q: query,
+		rating: 'pg',
 		limit: 1
 	})
 

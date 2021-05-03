@@ -9,10 +9,11 @@ html {
 }
 
 .imageContainer {
-    width: 300px;
+    width: 250px;
 }
 
 img {
     display: block;
+    max-width: 100%;
     width: 100%;
 }
