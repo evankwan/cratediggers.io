@@ -280,10 +280,13 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   height: calc(100vh - 50px);
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  min-height: 750px;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
   width: 100%;
@@ -295,9 +298,19 @@ header {
       -ms-flex-direction: row;
           flex-direction: row;
   height: 150px;
+  min-height: 150px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.topPosition > .formContainer {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding-top: 50px;
 }
 
 .topPosition h1 {
@@ -314,6 +327,10 @@ header {
 
 .topPosition button {
   padding: 7px 15px 3px;
+}
+
+.topPosition > .formContainer .dropdownItem {
+  background-color: #4f453e;
 }
 
 h1 {
@@ -335,9 +352,9 @@ form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 760px;
 }
 
@@ -351,6 +368,10 @@ form {
   width: 80%;
 }
 
+.search:focus {
+  outline: none;
+}
+
 button {
   background-color: transparent;
   border: 3px solid white;
@@ -362,13 +383,73 @@ button {
   padding: 8px 15px 5px;
 }
 
+button:focus {
+  border: 3px solid gold;
+}
+
+.formContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  width: 760px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.isActive {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dropdownMenu {
+  width: 80%;
+}
+
+.dropdownMenu .dropdownItem {
+  background-color: rgba(255, 255, 255, 0.2);
+  list-style-type: none;
+  color: white;
+  padding: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.dropdownMenu .dropdownItem:hover, .dropdownMenu .dropdownItem:focus {
+  border: 1px solid white;
+  outline: none;
+}
+
+.dropdownMenu .dropdownContent {
+  padding-left: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
 main {
   display: none;
 }
 
 .bigMain {
   display: block;
-  background-color: #e4e4e4;
+  background-color: #6c6559;
   min-height: calc(100vh - 150px - 50px);
 }
 
@@ -390,9 +471,9 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -406,8 +487,18 @@ main {
   background-color: #f9f9f9;
   text-align: center;
   padding: 15px;
-  cursor: pointer;
   font-family: 'Crimson Text', serif;
+  font-size: 1.5rem;
+}
+
+.results .artist a {
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid black;
+  color: #ab2217;
+  border-radius: 3px;
 }
 
 footer {
