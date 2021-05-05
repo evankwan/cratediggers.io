@@ -18,6 +18,7 @@ header {
     align-items: center;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     height: calc(100vh - 50px);
     justify-content: center;
     min-height: 750px;

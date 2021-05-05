@@ -7,6 +7,7 @@ const searchInput = document.querySelector('input[type=text]');
 const resultsList = document.getElementById('results');
 const dropdown = document.querySelector('.dropdown');
 const dropdownContent = document.querySelector('.dropdownContent');
+const genreTags = document.querySelectorAll('#genreTags li');
 
 // take in the search query and search method and run the API call to Last.fm
 app.getArtistsInfo = (query = searchInput.value, searchMethod = 'artist.search') => {
@@ -96,7 +97,6 @@ app.displayArtistsInfo = (data, searchMethod) => {
 	artistsResults.forEach( (artist) => {
 		const artistContainer = document.createElement('li');
 		
-		
 		if (searchMethod === 'artist.search') {
 			artistContainer.classList.add('dropdownItem');
 			artistContainer.setAttribute('tabindex', '0');
@@ -116,33 +116,8 @@ app.displayArtistsInfo = (data, searchMethod) => {
 
 			dropdownContent.append(artistContainer);
 		} else if (searchMethod === 'artist.getSimilar') {
-			resultsList.innerHTML = '';
-			artistContainer.classList.add('artist')
-			app.getArtistPicture(artist, artist.name, artistContainer);
-			app.transformHeader();
-			app.transformMain();
-		}
-
-		
-		
-		// let artistInfo;
-
-		// // if this is for an artist search
-		// if(searchMethod === 'artist.search'){
-		// 	artistInfo = artist.name;
-
-		// 	// event listener for click on the artist container to get recommendation
-		// 	// artistContainer.addEventListener('click', function() {
-		// 	// 	app.getArtistsInfo(this.textContent, 'artist.getSimilar');
-		// 	// })
-
-		// 	// add inner HTML and add to page
-		// 	artistContainer.innerHTML = artistInfo;
-		// 	resultsList.append(artistContainer);
-		// }else if(searchMethod === 'artist.getSimilar'){
-		// 	// if this is for an artist recommendation
-		// }
-		
+			app.preparePageForResults(artist, artistContainer);
+		}		
 	})
 }
 
@@ -178,8 +153,49 @@ app.debounce = (func, delay) => {
 	}
 };
 
+app.getGenreArtists = (query) => {
+	// initialize the url for last.fm API
+	const url = new URL('https://ws.audioscrobbler.com/2.0/');
+
+	url.search = new URLSearchParams({
+		method: 'tag.getTopArtists',
+		api_key: '3f350f5eaa519a05c6b21c5afc810ec0',
+		limit: 12,
+		tag: query,
+		format: 'json'
+	})
+
+	fetch(url)
+		.then(response => {
+			return response.json();
+		})
+		.then(data => {
+			const artistsArray = data.topartists.artist;
+			artistsArray.forEach(artist => {
+				const artistContainer = document.createElement('li');
+				app.preparePageForResults(artist, artistContainer);
+			})
+		})
+}
+
+app.addGenreTagEventListeners = () => {
+	genreTags.forEach(tag => {
+		tag.addEventListener('click', (event) => {
+			app.getGenreArtists(event.target.id);
+		});
+	})
+}
+
+app.preparePageForResults = (artist, artistContainer) => {
+	resultsList.innerHTML = '';
+	artistContainer.classList.add('artist');
+	app.transformHeader();
+	app.transformMain();
+	app.getArtistPicture(artist, artist.name, artistContainer);
+}
 
 app.init = () => {
+	// event listeners
 	searchInput.addEventListener('input', app.debounce(app.getArtistsInfo, 500));
 	searchInput.addEventListener('blur', function() {
 		if (this.blur && !button.focus) {
@@ -193,7 +209,7 @@ app.init = () => {
 		app.getArtistsInfo(searchValue, 'artist.getSimilar');
 		dropdown.classList.remove('isActive');
 	})
-
+	app.addGenreTagEventListeners();
 }
 
 app.init();

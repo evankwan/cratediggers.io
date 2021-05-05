@@ -280,6 +280,8 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   height: calc(100vh - 50px);
   -webkit-box-pack: center;
       -ms-flex-pack: center;
