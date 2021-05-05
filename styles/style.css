@@ -342,7 +342,6 @@ h1 {
 
 h2 {
   color: #f9f9f9;
-  margin: 0 0 40px;
 }
 
 form {
@@ -383,7 +382,7 @@ button {
   padding: 8px 15px 5px;
 }
 
-button:focus {
+button:focus, button:hover {
   border: 3px solid gold;
 }
 
@@ -441,6 +440,69 @@ button:focus {
   margin: 0;
   max-height: 200px;
   overflow-y: scroll;
+}
+
+.genreHeading {
+  margin: 0;
+}
+
+.genreTags {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0;
+}
+
+.genreTag {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 5px solid white;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 2rem;
+  height: 160px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 160px;
+  margin: 20px;
+}
+
+.genreTag.rnb:focus, .genreTag.rnb:hover {
+  border-color: #6262b4;
+  outline: none;
+}
+
+.genreTag.pop:focus, .genreTag.pop:hover {
+  border-color: #fb4fb0;
+  outline: none;
+}
+
+.genreTag.rock:focus, .genreTag.rock:hover {
+  border-color: #fe4040;
+  outline: none;
+}
+
+.genreTag.hipHop:focus, .genreTag.hipHop:hover {
+  border-color: #f9b13d;
+  outline: none;
+}
+
+.genreTag.dance:focus, .genreTag.dance:hover {
+  border-color: #53e256;
+  outline: none;
 }
 
 main {

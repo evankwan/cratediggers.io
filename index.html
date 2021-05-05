@@ -14,7 +14,16 @@
             <div class="wrapper">
                 <div class="headerFlexContainer">
                     <h1>Cratedigger</h1>
-                    <h2>Curated list of recommended artists</h2>
+                    <h2 class="genreHeading">Search by <span>Artist</span> or <span>Genre</span></h2>
+                    <ul id="genreTags" class="genreTags">
+                        <!-- Genre tags will load here -->
+                        <li class="genreTag rnb" id="rnb" tabindex="0">R&B</li>
+                        <li class="genreTag pop" id="pop" tabindex="0">Pop</li>
+                        <li class="genreTag rock" id="rock" tabindex="0">Rock</li>
+                        <!-- hip hop ID is in kebab case for API call purposes -->
+                        <li class="genreTag hipHop" id="hip-hop" tabindex="0">Hip-Hop</li>
+                        <li class="genreTag dance" id="dance" tabindex="0">Dance</li>
+                    </ul>
                     <div class="formContainer">
                         <form>
                             <label class="sr-only" for="search">Search for artist</label>
@@ -28,14 +37,6 @@
                             </div>
                         </div>
                     </div>
-                    <ul id="genreTags">
-                        <!-- Genre tags will load here -->
-                        <li id="rnb">R&B</li>
-                        <li id="pop">Pop</li>
-                        <li id="rock">Rock</li>
-                        <li id="hipHop">Hip-Hop</li>
-                        <li id="dance">Dance</li>
-                    </ul>
                 </div>
             </div>
         </div>

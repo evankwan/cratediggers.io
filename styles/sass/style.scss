@@ -66,7 +66,6 @@ h1 {
 
 h2 {
     color: #f9f9f9;
-    margin: 0 0 40px;
 }
 
 form {
@@ -100,7 +99,8 @@ button {
     margin-left: 10px;
     padding: 8px 15px 5px;
 
-    &:focus {
+    &:focus,
+    &:hover {
         border: 3px solid gold;
     }
 }
@@ -134,6 +134,7 @@ button {
         padding: 10px;
         border: 1px solid transparent;
         cursor: pointer;
+
         &:hover,
         &:focus{
             border: 1px solid white;
@@ -146,6 +147,62 @@ button {
         margin: 0;
         max-height: 200px;
         overflow-y: scroll;
+    }
+}
+
+.genreHeading {
+    margin: 0;
+}
+
+.genreTags {
+    align-items: center;
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    padding: 0;
+}
+
+.genreTag {
+    align-items: center;
+    border: 5px solid white;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    font-size: 2rem;
+    height: 160px;
+    justify-content: center;
+    width: 160px;
+    margin: 20px;
+
+    &.rnb:focus,
+    &.rnb:hover {
+        border-color: rgb(98, 98, 180);
+        outline: none;
+    }
+
+    &.pop:focus,
+    &.pop:hover {
+        border-color: rgb(251, 79, 176);
+        outline: none;
+    }
+
+    &.rock:focus,
+    &.rock:hover {
+        border-color: rgb(254, 64, 64);
+        outline: none;
+    }
+
+    &.hipHop:focus,
+    &.hipHop:hover {
+        border-color: rgb(249, 177, 61);
+        outline: none;
+    }
+    
+    &.dance:focus,
+    &.dance:hover {
+        border-color: rgb(83, 226, 86);
+        outline: none;
     }
 }
 
