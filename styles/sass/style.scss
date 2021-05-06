@@ -26,6 +26,19 @@ header {
     width: 100%;
 }
 
+.topHeaderFlexContainer,
+.bottomHeaderFlexContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 50%;
+    justify-content: flex-end;
+}
+
+.bottomHeaderFlexContainer{
+    justify-content: flex-start;
+}
+
 .topPosition {
     flex-direction: row;
     height: 150px;
@@ -54,6 +67,45 @@ header {
 
     & > .formContainer .dropdownItem {
         background-color: rgb(79, 69, 62);
+    }
+
+    .topHeaderFlexContainer{
+        flex-direction: row;
+        height: 100%;
+        
+    }
+    .buttonContainer{
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-evenly;
+        margin: 0;
+        .button{
+            font-size: 1rem;
+            border-radius: 10px;
+            width: 150px;
+        }
+    }
+    .bottomHeaderFlexContainer{
+        flex-direction: row;
+    }
+    form{
+        width: 100%;
+    }
+
+    .genreTag{
+        font-size: 1rem;
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+        font-weight: bold;
+    }
+    
+    .dropdown{
+        left: 0;
+        width: 95%;
+        .dropdownItem{
+            background-color:rgba(36,36,36,1);
+        }
     }
 }
 
@@ -89,7 +141,8 @@ form {
     }
 }
 
-button {
+.button {
+    font-family: 'Crimson Text', serif;
     background-color: transparent;
     border: 3px solid white;
     border-radius: 3px;
@@ -105,12 +158,33 @@ button {
     }
 }
 
+.buttonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    .button{
+        font-size: 2.5rem;
+        border-radius: 20px;
+        text-transform: uppercase;
+        padding: 16px 30px;
+        margin: 0 25px;
+    }
+}
+
 .formContainer{
-    display:flex;
+    display: flex;
     flex-direction: column;
+    height: 0;
     justify-content: center;
     align-items: center;
-    position:relative;
+    position: relative;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 1s ease;
+    margin: 20px;
+    visibility: hidden;
+    width: 0;
 }
 
 .dropdown {
@@ -118,7 +192,7 @@ button {
     width: 760px;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 2.5%;
 }
 
 .isActive {
@@ -154,12 +228,30 @@ button {
     margin: 0;
 }
 
+.genreTagsContainer{
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    transition: opacity 1s ease;
+}
+
 .genreTags {
     align-items: center;
     display: flex;
     list-style: none;
     justify-content: center;
     padding: 0;
+    width: 100%;
+}
+
+.activeSearch{
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+    overflow: visible;
+    width: 100%;
 }
 
 .genreTag {
@@ -199,8 +291,8 @@ button {
         outline: none;
     }
     
-    &.dance:focus,
-    &.dance:hover {
+    &.kpop:focus,
+    &.kpop:hover {
         border-color: rgb(83, 226, 86);
         outline: none;
     }

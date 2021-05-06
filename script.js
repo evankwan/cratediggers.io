@@ -2,12 +2,15 @@ const app = {};
 
 // selectors
 const form = document.querySelector('form');
-const button = document.querySelector('button');
+const submitButton = document.querySelector('.submitButton');
 const searchInput = document.querySelector('input[type=text]');
 const resultsList = document.getElementById('results');
 const dropdown = document.querySelector('.dropdown');
 const dropdownContent = document.querySelector('.dropdownContent');
 const genreTags = document.querySelectorAll('#genreTags li');
+const searchButtons = document.querySelectorAll('.searchButton')
+const formContainer = document.querySelector('.formContainer');
+const genreTagsContainer = document.querySelector('.genreTagsContainer');
 
 // take in the search query and search method and run the API call to Last.fm
 app.getArtistsInfo = (query = searchInput.value, searchMethod = 'artist.search') => {
@@ -61,13 +64,13 @@ app.getArtistPicture = (artist, query, artistContainer) => {
 }
 
 // displays the artists recommendations on screen
-app.displayArtistRecommendations = (artist, picture, artistContainer) =>{
+app.displayArtistRecommendations = ({ name, url }, picture, artistContainer) =>{
 	// setting the HTML
-	const artistInfo = `${artist.name} 
+	const artistInfo = `${name} 
 			<div class="imageContainer">
-				<img src="${picture}" alt="${artist.name}">
+				<img src="${picture}" alt="${name}">
 			</div>
-			<a href="${artist.url}" target="_blank">Check out their Last.fm page</a>`
+			<a href="${url}" target="_blank">Check out their Last.fm page</a>`
 
 	// adding and appending to browser
 	artistContainer.innerHTML = artistInfo;
@@ -141,6 +144,7 @@ app.transformMain = () => {
 	main.classList.add('bigMain');
 }
 
+// timeout for the dropdown
 app.debounce = (func, delay) => {
 	let timeoutID;
 	return () => {
@@ -148,10 +152,11 @@ app.debounce = (func, delay) => {
 			clearTimeout(timeoutID);
 		};
 		timeoutID = setTimeout(() => {
-			func.apply(null)
+			func();
 		}, delay);
 	}
 };
+
 
 app.getGenreArtists = (query) => {
 	// initialize the url for last.fm API
@@ -194,15 +199,37 @@ app.preparePageForResults = (artist, artistContainer) => {
 	app.getArtistPicture(artist, artist.name, artistContainer);
 }
 
+app.getSearchMethod = (method) =>{
+	if(method === 'searchByArtist'){
+		app.toggleSearchMethod(formContainer,genreTagsContainer)
+	}else if(method === 'searchByGenre'){
+		app.toggleSearchMethod(genreTagsContainer, formContainer)
+	}
+}
+
+app.toggleSearchMethod = (activeMethod,inactiveMethod) =>{
+	activeMethod.classList.add('activeSearch');
+	inactiveMethod.classList.remove('activeSearch');
+}
+
+
+app.addSearchButtonEventListeners = () =>{
+	searchButtons.forEach(button =>{
+		button.addEventListener('click', (event) =>{
+			app.getSearchMethod(event.target.id)
+		})
+	})
+}
+
 app.init = () => {
 	// event listeners
 	searchInput.addEventListener('input', app.debounce(app.getArtistsInfo, 500));
 	searchInput.addEventListener('blur', function() {
-		if (this.blur && !button.focus) {
+		if (this.blur && !submitButton.focus) {
 			dropdown.classList.remove('isActive');
 		}
 	});
-	button.addEventListener('click', (event) => {
+	submitButton.addEventListener('click', (event) => {
 		event.preventDefault();
 
 		const searchValue = searchInput.value;
@@ -210,6 +237,7 @@ app.init = () => {
 		dropdown.classList.remove('isActive');
 	})
 	app.addGenreTagEventListeners();
+	app.addSearchButtonEventListeners();
 }
 
 app.init();

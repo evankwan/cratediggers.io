@@ -292,6 +292,31 @@ header {
   width: 100%;
 }
 
+.topHeaderFlexContainer,
+.bottomHeaderFlexContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.bottomHeaderFlexContainer {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
 .topPosition {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -333,6 +358,60 @@ header {
   background-color: #4f453e;
 }
 
+.topPosition .topHeaderFlexContainer {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 100%;
+}
+
+.topPosition .buttonContainer {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 0;
+}
+
+.topPosition .buttonContainer .button {
+  font-size: 1rem;
+  border-radius: 10px;
+  width: 150px;
+}
+
+.topPosition .bottomHeaderFlexContainer {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.topPosition form {
+  width: 100%;
+}
+
+.topPosition .genreTag {
+  font-size: 1rem;
+  height: 100px;
+  width: 100px;
+  margin: 5px;
+  font-weight: bold;
+}
+
+.topPosition .dropdown {
+  left: 0;
+  width: 95%;
+}
+
+.topPosition .dropdown .dropdownItem {
+  background-color: #242424;
+}
+
 h1 {
   color: white;
   font-family: 'Crimson Text', serif;
@@ -371,7 +450,8 @@ form {
   outline: none;
 }
 
-button {
+.button {
+  font-family: 'Crimson Text', serif;
   background-color: transparent;
   border: 3px solid white;
   border-radius: 3px;
@@ -382,8 +462,29 @@ button {
   padding: 8px 15px 5px;
 }
 
-button:focus, button:hover {
+.button:focus, .button:hover {
   border: 3px solid gold;
+}
+
+.buttonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 40px;
+}
+
+.buttonContainer .button {
+  font-size: 2.5rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  padding: 16px 30px;
+  margin: 0 25px;
 }
 
 .formContainer {
@@ -394,6 +495,7 @@ button:focus, button:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: 0;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -401,6 +503,13 @@ button:focus, button:hover {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  opacity: 0;
+  overflow: hidden;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+  margin: 20px;
+  visibility: hidden;
+  width: 0;
 }
 
 .dropdown {
@@ -408,7 +517,7 @@ button:focus, button:hover {
   width: 760px;
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 2.5%;
 }
 
 .isActive {
@@ -446,6 +555,16 @@ button:focus, button:hover {
   margin: 0;
 }
 
+.genreTagsContainer {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
+
 .genreTags {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -458,6 +577,15 @@ button:focus, button:hover {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 0;
+  width: 100%;
+}
+
+.activeSearch {
+  height: auto;
+  visibility: visible;
+  opacity: 1;
+  overflow: visible;
+  width: 100%;
 }
 
 .genreTag {
@@ -500,7 +628,7 @@ button:focus, button:hover {
   outline: none;
 }
 
-.genreTag.dance:focus, .genreTag.dance:hover {
+.genreTag.kpop:focus, .genreTag.kpop:hover {
   border-color: #53e256;
   outline: none;
 }

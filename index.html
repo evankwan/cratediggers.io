@@ -13,27 +13,37 @@
         <div class="headerOverlay">
             <div class="wrapper">
                 <div class="headerFlexContainer">
-                    <h1>Cratedigger</h1>
-                    <h2 class="genreHeading">Search by <span>Artist</span> or <span>Genre</span></h2>
-                    <ul id="genreTags" class="genreTags">
-                        <!-- Genre tags will load here -->
-                        <li class="genreTag rnb" id="rnb" tabindex="0">R&B</li>
-                        <li class="genreTag pop" id="pop" tabindex="0">Pop</li>
-                        <li class="genreTag rock" id="rock" tabindex="0">Rock</li>
-                        <!-- hip hop ID is in kebab case for API call purposes -->
-                        <li class="genreTag hipHop" id="hip-hop" tabindex="0">Hip-Hop</li>
-                        <li class="genreTag dance" id="dance" tabindex="0">Dance</li>
-                    </ul>
-                    <div class="formContainer">
-                        <form>
-                            <label class="sr-only" for="search">Search for artist</label>
-                            <input type="text" name="search" class="search" id="search" autocomplete="off" placeholder="Search for artist...">
-                            
-                            <button type="submit">Submit</button>
-                        </form>
-                        <div class="dropdown">
-                            <div class="dropdownMenu">
-                                <ul class="dropdownContent" tabindex="-1"></ul>
+                    <div class="topHeaderFlexContainer">
+                        <h1>Cratedigger</h1>
+                        <h2 class="genreHeading">Search by:</h2>
+                        <div class="buttonContainer">
+                            <button id="searchByArtist" class="button searchButton">Artist</button>
+                            <button id="searchByGenre" class="button searchButton">Genre</button>
+                        </div>
+                    </div>
+                    <div class="bottomHeaderFlexContainer">
+                        <div class="genreTagsContainer">
+                            <ul id="genreTags" class="genreTags">
+                                    <!-- Genre tags will load here -->
+                                <li class="genreTag rnb" id="rnb" tabindex="0">R&B</li>
+                                <li class="genreTag pop" id="pop" tabindex="0">Pop</li>
+                                <li class="genreTag rock" id="rock" tabindex="0">Rock</li>
+                                <!-- hip hop/k-pop ID is in kebab case for API call purposes -->
+                                <li class="genreTag hipHop" id="hip-hop" tabindex="0">Hip-Hop</li>
+                                <li class="genreTag kpop" id="k-pop" tabindex="0">K-Pop</li>
+                            </ul>
+                        </div>
+                        <div class="formContainer">
+                            <form>
+                                <label class="sr-only" for="search">Search for artist</label>
+                                <input type="text" name="search" class="search" id="search" autocomplete="off" placeholder="Search for artist...">
+                                
+                                <button type="submit" class="button submitButton">Submit</button>
+                            </form>
+                            <div class="dropdown">
+                                <div class="dropdownMenu">
+                                    <ul class="dropdownContent" tabindex="-1"></ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -42,7 +52,7 @@
         </div>
 	</header>
 
-    <main>
+    <main class="">
         <div class="wrapper">
             <ul id="results" class="results">
                 <!-- this is where the results go -->
