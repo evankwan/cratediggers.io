@@ -230,7 +230,6 @@ app.handleSearchBlur = (event) => {
 		console.log(searchInput.blur);
 		dropdown.classList.remove('isActive');
 	}
-	
 }
 
 app.init = () => {
