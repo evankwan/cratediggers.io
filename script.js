@@ -11,6 +11,8 @@ const genreTags = document.querySelectorAll('#genreTags li');
 const searchButtons = document.querySelectorAll('.searchButton')
 const formContainer = document.querySelector('.formContainer');
 const genreTagsContainer = document.querySelector('.genreTagsContainer');
+const resultsHeadingQuery = document.getElementById('searchQuery');
+const body = document.querySelector('body');
 
 // take in the search query and search method and run the API call to Last.fm
 app.getArtistsInfo = (query = searchInput.value, searchMethod = 'artist.search') => {
@@ -34,7 +36,8 @@ app.getArtistsInfo = (query = searchInput.value, searchMethod = 'artist.search')
 		}).then((data) => {
 			app.displayArtistsInfo(data, searchMethod);
 		})
-
+	
+	app.changeResultsHeading(query);
 }
 
 // get the artist's displayed on screen and find a gif to represent them
@@ -124,8 +127,6 @@ app.displayArtistsInfo = (data, searchMethod) => {
 	})
 }
 
-
-
 // transforms the header to a top search bar to make room for artists on the page
 app.transformHeader = () => {
 	// select the headerFlexContainer
@@ -155,8 +156,7 @@ app.debounce = (func, delay) => {
 			func();
 		}, delay);
 	}
-};
-
+}
 
 app.getGenreArtists = (query) => {
 	// initialize the url for last.fm API
@@ -187,6 +187,7 @@ app.addGenreTagEventListeners = () => {
 	genreTags.forEach(tag => {
 		tag.addEventListener('click', (event) => {
 			app.getGenreArtists(event.target.id);
+			app.changeResultsHeading(event.target.textContent);
 		});
 	})
 }
@@ -212,7 +213,6 @@ app.toggleSearchMethod = (activeMethod,inactiveMethod) =>{
 	inactiveMethod.classList.remove('activeSearch');
 }
 
-
 app.addSearchButtonEventListeners = () =>{
 	searchButtons.forEach(button =>{
 		button.addEventListener('click', (event) =>{
@@ -221,14 +221,22 @@ app.addSearchButtonEventListeners = () =>{
 	})
 }
 
+app.changeResultsHeading = (keyword) => {
+	resultsHeadingQuery.textContent = keyword;
+}
+
+app.handleSearchBlur = (event) => {
+	if (searchInput.blur) {
+		console.log(searchInput.blur);
+		dropdown.classList.remove('isActive');
+	}
+	
+}
+
 app.init = () => {
 	// event listeners
 	searchInput.addEventListener('input', app.debounce(app.getArtistsInfo, 500));
-	searchInput.addEventListener('blur', function() {
-		if (this.blur && !submitButton.focus) {
-			dropdown.classList.remove('isActive');
-		}
-	});
+	body.addEventListener('click', app.handleSearchBlur);
 	submitButton.addEventListener('click', (event) => {
 		event.preventDefault();
 
