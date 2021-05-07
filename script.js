@@ -243,6 +243,7 @@ app.init = () => {
 		app.getArtistsInfo(searchValue, 'artist.getSimilar');
 		dropdown.classList.remove('isActive');
 	})
+	app.getGenreArtists('hip-hop');
 	app.addGenreTagEventListeners();
 	app.addSearchButtonEventListeners();
 }
