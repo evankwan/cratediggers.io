@@ -15,7 +15,7 @@
             <div class="wrapper">
                 <div class="headerFlexContainer">
                     <div class="topHeaderFlexContainer">
-                        <h1>Cratedigger</h1>
+                        <h1 tabindex="0" role="button" aria-pressed="false">Cratedigger</h1>
                         <h2 class="subHeading">Find new recommended artists. Search by:</h2>
                         <div class="buttonContainer">
                             <button id="searchByArtist" class="button searchButton">Artist</button>
@@ -25,13 +25,13 @@
                     <div class="bottomHeaderFlexContainer">
                         <div class="genreTagsContainer">
                             <ul id="genreTags" class="genreTags">
-                                    <!-- Genre tags will load here -->
-                                <li class="genreTag rnb" id="rnb" tabindex="0">R&B</li>
-                                <li class="genreTag pop" id="pop" tabindex="0">Pop</li>
-                                <li class="genreTag rock" id="rock" tabindex="0">Rock</li>
+                                <!-- used <li> to group tags together, and assigned role="button" for ARIA purposes -->
+                                <li class="genreTag rnb" id="rnb" tabindex="0" role="button" aria-pressed="false">R&B</li>
+                                <li class="genreTag pop" id="pop" tabindex="0" role="button" aria-pressed="false">Pop</li>
+                                <li class="genreTag rock" id="rock" tabindex="0" role="button" aria-pressed="false">Rock</li>
                                 <!-- hip hop/k-pop ID is in kebab case for API call purposes -->
-                                <li class="genreTag hipHop" id="hip-hop" tabindex="0">Hip-Hop</li>
-                                <li class="genreTag kpop" id="k-pop" tabindex="0">K-Pop</li>
+                                <li class="genreTag hipHop" id="hip-hop" tabindex="0" role="button" aria-pressed="false">Hip-Hop</li>
+                                <li class="genreTag kpop" id="k-pop" tabindex="0" role="button" aria-pressed="false">K-Pop</li>
                             </ul>
                         </div>
                         <div class="formContainer">
