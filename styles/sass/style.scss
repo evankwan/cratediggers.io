@@ -1,5 +1,8 @@
 @import "partials/setup";
+@import "partials/mixin";
 @import "partials/global";
+@import "partials/dropdown";
+@import "partials/media";
 
 header {
     background-image: url(../assets/headerBackground.jpg);
