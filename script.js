@@ -181,6 +181,7 @@ app.addGenreTagEventListeners = () => {
 			app.getGenreArtists(event.target.id);
 			app.changeResultsHeading(event.target.textContent);
 		});
+		tag.addEventListener('keydown', app.handleGenreSelect);
 	})
 }
 
@@ -243,6 +244,13 @@ app.handleArtistSelect = ({ code, target }) => {
 	}
 }
 
+app.handleGenreSelect = ({ code, target }) => {
+	if (code === 'Enter') {
+		app.getGenreArtists(target.id);
+		app.changeResultsHeading(target.textContent);
+	}
+}
+
 app.handleArtistBlur = ({ target }) => {
 	const dropdownItems = document.querySelectorAll('.dropdownItem');
 	
@@ -264,7 +272,6 @@ app.handleKeydown = ({key}) => {
 	if (keyIndex === -1) {
 		app.activeKeys.push(key);
 	}
-	
 }
 
 app.handleKeyup = ({ key }) => {
@@ -284,17 +291,19 @@ app.handleTitle = () => {
 	main.classList.remove('bigMain');
 }
 
+app.handleSubmitButton = (event) => {
+	event.preventDefault();
+
+	const searchValue = searchInput.value;
+	app.getArtistsInfo(searchValue, 'artist.getSimilar');
+	dropdown.classList.remove('isActive');
+}
+
 app.init = () => {
 	// event listeners
 	searchInput.addEventListener('input', app.debounce(app.getArtistsInfo, 500));
 	body.addEventListener('click', app.handleSearchBlur);
-	submitButton.addEventListener('click', (event) => {
-		event.preventDefault();
-
-		const searchValue = searchInput.value;
-		app.getArtistsInfo(searchValue, 'artist.getSimilar');
-		dropdown.classList.remove('isActive');
-	})
+	submitButton.addEventListener('click', app.handleSubmitButton);
 	title.addEventListener('click', app.handleTitle);
 	body.addEventListener('blur', app.handleBodyBlur);
 	body.addEventListener('keydown', app.handleKeydown);
