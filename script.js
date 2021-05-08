@@ -108,18 +108,9 @@ app.displayArtistsInfo = (data, searchMethod) => {
 			artistContainer.classList.add('dropdownItem');
 			artistContainer.setAttribute('tabindex', '0');
 			artistContainer.innerHTML = `${artist.name}`;
-			artistContainer.addEventListener('click', function () {
-				app.getArtistsInfo(this.textContent, 'artist.getSimilar');
-				dropdown.classList.remove('isActive');
-			});
-			artistContainer.addEventListener('blur', function () {
-				const dropdownItems = document.querySelectorAll('.dropdownItem');
-				
-				if (this === dropdownItems[dropdownItems.length - 1]) {
-					console.log('blur');
-					dropdown.classList.remove('isActive');
-				}
-			});
+			artistContainer.addEventListener('click', app.handleArtistClick);
+			artistContainer.addEventListener('blur', app.handleArtistBlur);
+			artistContainer.addEventListener('keydown', app.handleArtistSelect);
 
 			dropdownContent.append(artistContainer);
 		} else if (searchMethod === 'artist.getSimilar') {
@@ -236,6 +227,26 @@ app.toggleExpandedTopPosition = (searchMethod) => {
 
 app.changeResultsHeading = (keyword) => {
 	resultsHeadingQuery.textContent = keyword;
+}
+
+app.handleArtistClick = ({ target }) => {
+	app.getArtistsInfo(target.textContent, 'artist.getSimilar');
+	dropdown.classList.remove('isActive');
+}
+
+app.handleArtistSelect = ({ code, target }) => {
+	if (code === 'Enter') {
+		app.getArtistsInfo(target.textContent, 'artist.getSimilar');
+	}
+}
+
+app.handleArtistBlur = ({ target }) => {
+	const dropdownItems = document.querySelectorAll('.dropdownItem');
+	console.log(target);
+	target.onblur {
+		console.log('blur');
+		dropdown.classList.remove('isActive');
+	}
 }
 
 // app.handleSearchBlur = (event) => {
