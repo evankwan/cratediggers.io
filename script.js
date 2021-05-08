@@ -128,7 +128,7 @@ app.transformHeader = () => {
 	// add the class to move header to top of screen
 	headerFlexContainer.classList.add('topPosition');
 
-	headerFlexContainer.classList.remove('expandedTopPosition');
+	headerFlexContainer.classList.remove('genreTopPosition', 'artistTopPosition');
 }
 
 // transforms the main section when a search is placed 

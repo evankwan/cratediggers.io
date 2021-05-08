@@ -418,6 +418,7 @@ header {
 
 h1 {
   color: white;
+  cursor: pointer;
   font-family: 'Crimson Text', serif;
   font-size: 5rem;
   margin: 10px 0;
