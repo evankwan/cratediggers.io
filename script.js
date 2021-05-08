@@ -1,9 +1,11 @@
 const app = {};
 
+app.activeKeys=[];
+
 // selectors
 const form = document.querySelector('form');
 const submitButton = document.querySelector('.submitButton');
-const searchInput = document.querySelector('input[type=text]');
+const searchInput = document.getElementById('search');
 const resultsList = document.getElementById('results');
 const dropdown = document.querySelector('.dropdown');
 const dropdownContent = document.querySelector('.dropdownContent');
@@ -14,6 +16,8 @@ const genreTagsContainer = document.querySelector('.genreTagsContainer');
 const resultsHeadingQuery = document.getElementById('searchQuery');
 const body = document.querySelector('body');
 const headerFlexContainer = document.querySelector('.headerFlexContainer');
+const title = document.querySelector('h1');
+const main = document.querySelector('main');
 
 // take in the search query and search method and run the API call to Last.fm
 app.getArtistsInfo = (query = searchInput.value, searchMethod = 'artist.search') => {
@@ -129,9 +133,6 @@ app.transformHeader = () => {
 
 // transforms the main section when a search is placed 
 app.transformMain = () => {
-	// select the headerFlexContainer
-	const main = document.querySelector('main');
-
 	// add the class to move header to top of screen
 	main.classList.add('bigMain');
 }
@@ -214,14 +215,16 @@ app.addSearchButtonEventListeners = () =>{
 }
 
 app.toggleExpandedTopPosition = (searchMethod) => {
-	if (headerFlexContainer.classList.contains('expandedTopPosition')) {
-		if (searchMethod === 'searchByArtist' && formContainer.classList.contains('activeSearch')) {
-			headerFlexContainer.classList.remove('expandedTopPosition');
-		} else if (searchMethod === 'searchByGenre' && genreTagsContainer.classList.contains('activeSearch')) {
-			headerFlexContainer.classList.remove('expandedTopPosition');
+	if(headerFlexContainer.classList.contains('topPosition')){
+		if (headerFlexContainer.classList.contains('expandedTopPosition')) {
+			if (searchMethod === 'searchByArtist' && formContainer.classList.contains('activeSearch')) {
+				headerFlexContainer.classList.remove('expandedTopPosition');
+			} else if (searchMethod === 'searchByGenre' && genreTagsContainer.classList.contains('activeSearch')) {
+				headerFlexContainer.classList.remove('expandedTopPosition');
+			}
+		} else {
+			headerFlexContainer.classList.add('expandedTopPosition');
 		}
-	} else {
-		headerFlexContainer.classList.add('expandedTopPosition');
 	}
 }
 
@@ -242,19 +245,44 @@ app.handleArtistSelect = ({ code, target }) => {
 
 app.handleArtistBlur = ({ target }) => {
 	const dropdownItems = document.querySelectorAll('.dropdownItem');
-	console.log(target);
-	target.onblur {
-		console.log('blur');
-		dropdown.classList.remove('isActive');
+	
+	if (target === dropdownItems[dropdownItems.length - 1] && app.activeKeys.indexOf("Shift") === -1) {
+			dropdown.classList.remove('isActive');
 	}
 }
 
-// app.handleSearchBlur = (event) => {
-// 	if (searchInput.blur) {
-// 		console.log(searchInput.blur);
-// 		dropdown.classList.remove('isActive');
-// 	}
-// }
+app.handleSearchBlur = ({target}) => {
+	if(target !== dropdown && target !== searchInput){
+		dropdown.classList.remove('isActive');
+	} else if(target === searchInput){
+		dropdown.classList.add('isActive');
+	}
+}
+
+app.handleKeydown = ({key}) => {
+	const keyIndex = app.activeKeys.indexOf(key);
+	if (keyIndex === -1) {
+		app.activeKeys.push(key);
+	}
+	
+}
+
+app.handleKeyup = ({ key }) => {
+	const keyIndex = app.activeKeys.indexOf(key);
+	if (keyIndex > -1) {
+		app.activeKeys.splice(keyIndex, 1);
+	}
+	
+}
+
+app.handleBodyBlur = () => {
+	app.activeKeys = [];
+}
+
+app.handleTitle = () => {
+	headerFlexContainer.classList.remove('topPosition', 'expandedTopPosition');
+	main.classList.remove('bigMain');
+}
 
 app.init = () => {
 	// event listeners
@@ -267,7 +295,10 @@ app.init = () => {
 		app.getArtistsInfo(searchValue, 'artist.getSimilar');
 		dropdown.classList.remove('isActive');
 	})
-	// app.getGenreArtists('hip-hop');
+	title.addEventListener('click', app.handleTitle);
+	body.addEventListener('blur', app.handleBodyBlur);
+	body.addEventListener('keydown', app.handleKeydown);
+	body.addEventListener('keyup', app.handleKeyup);
 	app.addGenreTagEventListeners();
 	app.addSearchButtonEventListeners();
 }

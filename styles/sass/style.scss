@@ -43,7 +43,7 @@ header {
     height: 150px;
     min-height: 150px;
     justify-content: space-between;
-
+    
     & > .formContainer{
         align-items: flex-start;
         align-self: flex-start;
@@ -415,6 +415,7 @@ footer{
     .expandedTopPosition {
         height: 300px;
         overflow: visible;
+        transition: all 1s ease;
 
         .genreTagsContainer,
         .formContainer {
@@ -469,7 +470,6 @@ footer{
     
     .headerFlexContainer{
         justify-content: space-between;
-        // min-height: min-content;
     }
 
     .topHeaderFlexContainer{
@@ -512,8 +512,17 @@ footer{
         width: 100px;
     }
 
+    .buttonContainer .button{
+        margin: 0 10px;
+        font-size: 1.5rem;
+    }
+
     .topPosition.expandedTopPosition {
-        height: min-content;
+        height: 400px;
+    }
+
+    .topPosition .bottomHeaderFlexContainer{
+        flex-basis: 250px;
     }
 }
 
@@ -527,10 +536,11 @@ footer{
         }
     }
 
-    .headerFlexContainer {
-        height: 175px;
-    }
+    
+
     .topPosition {
+        height: 175px;
+    
         .topHeaderFlexContainer {
             flex-direction: column;
             height: 175px;
@@ -544,5 +554,9 @@ footer{
         .buttonContainer {
             flex-direction: row;
         }
+    }
+
+    .buttonContainer .button{
+        font-size: 1rem;
     }
 }

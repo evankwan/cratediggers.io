@@ -780,6 +780,8 @@ footer p {
   .expandedTopPosition {
     height: 300px;
     overflow: visible;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
   }
   .expandedTopPosition .genreTagsContainer,
   .expandedTopPosition .formContainer {
@@ -870,10 +872,16 @@ footer p {
     padding: 10px 8px;
     width: 100px;
   }
+  .buttonContainer .button {
+    margin: 0 10px;
+    font-size: 1.5rem;
+  }
   .topPosition.expandedTopPosition {
-    height: -webkit-min-content;
-    height: -moz-min-content;
-    height: min-content;
+    height: 400px;
+  }
+  .topPosition .bottomHeaderFlexContainer {
+    -ms-flex-preferred-size: 250px;
+        flex-basis: 250px;
   }
 }
 
@@ -887,7 +895,7 @@ footer p {
   .results .artist {
     font-size: 1rem;
   }
-  .headerFlexContainer {
+  .topPosition {
     height: 175px;
   }
   .topPosition .topHeaderFlexContainer {
@@ -906,5 +914,8 @@ footer p {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+  }
+  .buttonContainer .button {
+    font-size: 1rem;
   }
 }
