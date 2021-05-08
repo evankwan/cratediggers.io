@@ -777,14 +777,17 @@ footer p {
   .topPosition .buttonContainer .button {
     margin-right: 0;
   }
-  .expandedTopPosition {
+  .artistTopPosition,
+  .genreTopPosition {
     height: 300px;
     overflow: visible;
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
   }
-  .expandedTopPosition .genreTagsContainer,
-  .expandedTopPosition .formContainer {
+  .artistTopPosition .genreTagsContainer,
+  .artistTopPosition .formContainer,
+  .genreTopPosition .genreTagsContainer,
+  .genreTopPosition .formContainer {
     opacity: 1;
   }
 }
@@ -876,7 +879,7 @@ footer p {
     margin: 0 10px;
     font-size: 1.5rem;
   }
-  .topPosition.expandedTopPosition {
+  .topPosition.genreTopPosition {
     height: 400px;
   }
   .topPosition .bottomHeaderFlexContainer {
@@ -894,6 +897,9 @@ footer p {
   }
   .results .artist {
     font-size: 1rem;
+  }
+  .topPosition.artistTopPosition {
+    height: 300px;
   }
   .topPosition {
     height: 175px;
@@ -921,7 +927,7 @@ footer p {
 }
 
 @media (max-width: 350px) {
-  .topPosition.expandedTopPosition {
+  .topPosition.genreTopPosition {
     height: 510px;
   }
 }
