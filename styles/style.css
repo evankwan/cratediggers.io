@@ -865,8 +865,8 @@ footer p {
   }
   .genreTag {
     margin: 10px;
-    height: 100px;
-    width: 100px;
+    height: 110px;
+    width: 110px;
   }
   .topPosition .buttonContainer .button {
     padding: 10px 8px;
@@ -917,5 +917,11 @@ footer p {
   }
   .buttonContainer .button {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .topPosition.expandedTopPosition {
+    height: 510px;
   }
 }

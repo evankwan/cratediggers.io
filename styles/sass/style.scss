@@ -476,7 +476,6 @@ footer{
         flex-shrink: 0;
         flex-basis: 40%;
         margin-bottom: 10px;
-        
     }
 
     .bottomHeaderFlexContainer {
@@ -503,8 +502,8 @@ footer{
 
     .genreTag {
         margin: 10px;
-        height: 100px;
-        width: 100px;
+        height: 110px;
+        width: 110px;
     }
 
     .topPosition .buttonContainer .button {
@@ -558,5 +557,11 @@ footer{
 
     .buttonContainer .button{
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .topPosition.expandedTopPosition {
+        height: 510px;
     }
 }
