@@ -412,7 +412,8 @@ footer{
         }
     }
 
-    .expandedTopPosition {
+    .artistTopPosition,
+    .genreTopPosition {
         height: 300px;
         overflow: visible;
         transition: all 1s ease;
@@ -516,7 +517,7 @@ footer{
         font-size: 1.5rem;
     }
 
-    .topPosition.expandedTopPosition {
+    .topPosition.genreTopPosition {
         height: 400px;
     }
 
@@ -535,7 +536,9 @@ footer{
         }
     }
 
-    
+    .topPosition.artistTopPosition {
+        height: 300px;
+    }
 
     .topPosition {
         height: 175px;
@@ -561,7 +564,7 @@ footer{
 }
 
 @media (max-width: 350px) {
-    .topPosition.expandedTopPosition {
+    .topPosition.genreTopPosition {
         height: 510px;
     }
 }

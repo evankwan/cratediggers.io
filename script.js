@@ -216,15 +216,27 @@ app.addSearchButtonEventListeners = () =>{
 }
 
 app.toggleExpandedTopPosition = (searchMethod) => {
-	if(headerFlexContainer.classList.contains('topPosition')){
-		if (headerFlexContainer.classList.contains('expandedTopPosition')) {
+	if(headerFlexContainer.classList.contains('topPosition')) {
+		if (headerFlexContainer.classList.contains('genreTopPosition')) {
+			if (searchMethod === 'searchByGenre' && genreTagsContainer.classList.contains('activeSearch')) {
+				headerFlexContainer.classList.remove('genreTopPosition');
+			} else {
+				headerFlexContainer.classList.add('artistTopPosition');
+				headerFlexContainer.classList.remove('genreTopPosition');
+			}
+		} else if (headerFlexContainer.classList.contains('artistTopPosition')) {
 			if (searchMethod === 'searchByArtist' && formContainer.classList.contains('activeSearch')) {
-				headerFlexContainer.classList.remove('expandedTopPosition');
-			} else if (searchMethod === 'searchByGenre' && genreTagsContainer.classList.contains('activeSearch')) {
-				headerFlexContainer.classList.remove('expandedTopPosition');
+				headerFlexContainer.classList.remove('artistTopPosition');
+			} else {
+				headerFlexContainer.classList.add('genreTopPosition');
+				headerFlexContainer.classList.remove('artistTopPosition');
 			}
 		} else {
-			headerFlexContainer.classList.add('expandedTopPosition');
+			if (searchMethod === 'searchByGenre') {
+				headerFlexContainer.classList.add('genreTopPosition');
+			} else if (searchMethod === 'searchByArtist') {
+				headerFlexContainer.classList.add('artistTopPosition');
+			}
 		}
 	}
 }
@@ -287,7 +299,7 @@ app.handleBodyBlur = () => {
 }
 
 app.handleTitle = () => {
-	headerFlexContainer.classList.remove('topPosition', 'expandedTopPosition');
+	headerFlexContainer.classList.remove('topPosition', 'artistTopPosition', 'genreTopPosition');
 	main.classList.remove('bigMain');
 }
 
