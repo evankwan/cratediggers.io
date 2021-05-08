@@ -246,7 +246,8 @@ html {
 }
 
 .imageContainer {
-  width: 250px;
+  max-width: 250px;
+  width: 100%;
 }
 
 img {
@@ -513,7 +514,6 @@ form {
   overflow: hidden;
   -webkit-transition: opacity 1s ease;
   transition: opacity 1s ease;
-  margin: 20px;
   visibility: hidden;
   width: 0;
 }
@@ -597,6 +597,10 @@ form {
   opacity: 1;
   overflow: visible;
   width: 100%;
+}
+
+.activeSearch.formContainer {
+  margin: 20px;
 }
 
 .genreTag {
@@ -731,6 +735,58 @@ footer p {
   color: white;
 }
 
+@media (max-width: 1250px) {
+  .topPosition {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    overflow: hidden;
+  }
+  .topPosition .buttonContainer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .topPosition .topHeaderFlexContainer,
+  .topPosition .bottomHeaderFlexContainer {
+    -ms-flex-preferred-size: 150px;
+        flex-basis: 150px;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+  }
+  .topPosition .bottomHeaderFlexContainer {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .topPosition .genreTags {
+    margin: 0;
+  }
+  .topPosition .genreTagsContainer {
+    opacity: 0;
+    -webkit-transition: opacity .5s .4s;
+    transition: opacity .5s .4s;
+  }
+  .topPosition .formContainer {
+    opacity: 0;
+    -webkit-transition: opacity .5s .4s;
+    transition: opacity .5s .4s;
+  }
+  .topPosition .buttonContainer .button {
+    margin-right: 0;
+  }
+  .expandedTopPosition {
+    height: 300px;
+    overflow: visible;
+  }
+  .expandedTopPosition .genreTagsContainer,
+  .expandedTopPosition .formContainer {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 1100px) {
   .genreTag {
     font-size: 1.3rem;
@@ -754,6 +810,17 @@ footer p {
   .results {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
+  }
+  .topPosition .buttonContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .topPosition .buttonContainer .button {
+    border-radius: 10px;
+    margin: 0 10px;
+    padding: 8px 15px;
   }
 }
 
@@ -791,19 +858,22 @@ footer p {
   .fa-search {
     display: block;
   }
-  .genreTags {
-    margin: 0;
+  .topPosition .genreTags {
+    margin-bottom: 20px;
   }
   .genreTag {
     margin: 10px;
     height: 100px;
     width: 100px;
   }
-  .buttonContainer .button {
-    border-radius: 10px;
-    font-size: 1.5rem;
-    margin: 0 10px;
-    padding: 8px 15px;
+  .topPosition .buttonContainer .button {
+    padding: 10px 8px;
+    width: 100px;
+  }
+  .topPosition.expandedTopPosition {
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
   }
 }
 
@@ -816,5 +886,25 @@ footer p {
   }
   .results .artist {
     font-size: 1rem;
+  }
+  .headerFlexContainer {
+    height: 175px;
+  }
+  .topPosition .topHeaderFlexContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 175px;
+    margin-bottom: 20px;
+  }
+  .topPosition h1 {
+    font-size: 3rem;
+  }
+  .topPosition .buttonContainer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
 }

@@ -13,6 +13,7 @@ const formContainer = document.querySelector('.formContainer');
 const genreTagsContainer = document.querySelector('.genreTagsContainer');
 const resultsHeadingQuery = document.getElementById('searchQuery');
 const body = document.querySelector('body');
+const headerFlexContainer = document.querySelector('.headerFlexContainer');
 
 // take in the search query and search method and run the API call to Last.fm
 app.getArtistsInfo = (query = searchInput.value, searchMethod = 'artist.search') => {
@@ -129,11 +130,10 @@ app.displayArtistsInfo = (data, searchMethod) => {
 
 // transforms the header to a top search bar to make room for artists on the page
 app.transformHeader = () => {
-	// select the headerFlexContainer
-	const headerFlexContainer = document.querySelector('.headerFlexContainer');
-
 	// add the class to move header to top of screen
 	headerFlexContainer.classList.add('topPosition');
+
+	headerFlexContainer.classList.remove('expandedTopPosition');
 }
 
 // transforms the main section when a search is placed 
@@ -208,29 +208,42 @@ app.getSearchMethod = (method) =>{
 	}
 }
 
-app.toggleSearchMethod = (activeMethod,inactiveMethod) =>{
+app.toggleSearchMethod = (activeMethod, inactiveMethod) =>{
 	activeMethod.classList.add('activeSearch');
 	inactiveMethod.classList.remove('activeSearch');
 }
 
 app.addSearchButtonEventListeners = () =>{
 	searchButtons.forEach(button =>{
-		button.addEventListener('click', (event) =>{
-			app.getSearchMethod(event.target.id)
+		button.addEventListener('click', ({ target: { id } }) => {
+			app.toggleExpandedTopPosition(id);
+			app.getSearchMethod(id);
 		})
 	})
+}
+
+app.toggleExpandedTopPosition = (searchMethod) => {
+	if (headerFlexContainer.classList.contains('expandedTopPosition')) {
+		if (searchMethod === 'searchByArtist' && formContainer.classList.contains('activeSearch')) {
+			headerFlexContainer.classList.remove('expandedTopPosition');
+		} else if (searchMethod === 'searchByGenre' && genreTagsContainer.classList.contains('activeSearch')) {
+			headerFlexContainer.classList.remove('expandedTopPosition');
+		}
+	} else {
+		headerFlexContainer.classList.add('expandedTopPosition');
+	}
 }
 
 app.changeResultsHeading = (keyword) => {
 	resultsHeadingQuery.textContent = keyword;
 }
 
-app.handleSearchBlur = (event) => {
-	if (searchInput.blur) {
-		console.log(searchInput.blur);
-		dropdown.classList.remove('isActive');
-	}
-}
+// app.handleSearchBlur = (event) => {
+// 	if (searchInput.blur) {
+// 		console.log(searchInput.blur);
+// 		dropdown.classList.remove('isActive');
+// 	}
+// }
 
 app.init = () => {
 	// event listeners
@@ -243,7 +256,7 @@ app.init = () => {
 		app.getArtistsInfo(searchValue, 'artist.getSimilar');
 		dropdown.classList.remove('isActive');
 	})
-	app.getGenreArtists('hip-hop');
+	// app.getGenreArtists('hip-hop');
 	app.addGenreTagEventListeners();
 	app.addSearchButtonEventListeners();
 }
