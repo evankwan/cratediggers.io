@@ -1,5 +1,6 @@
 const app = {};
 
+// empty array to track which keys are currently pressed to navigate dropdown
 app.activeKeys=[];
 
 // selectors
@@ -106,17 +107,24 @@ app.displayArtistsInfo = (data, searchMethod) => {
 	dropdown.classList.add('isActive');
 	// loop through each artist and add to the page
 	artistsResults.forEach((artist) => {
+		// create list item for each artist
 		const artistContainer = document.createElement('li');
 		
+		// if adding to autocomplete dropdown
 		if (searchMethod === 'artist.search') {
+			// adding styling to individual dropdown list item
 			artistContainer.classList.add('dropdownItem');
+			// ensuring each list item is focusable for accessibility
 			artistContainer.setAttribute('tabindex', '0');
+			// adding the artist name to the list item
 			artistContainer.innerHTML = `${artist.name}`;
+			//  add event handlers for the list item
 			artistContainer.addEventListener('click', app.handleArtistClick);
 			artistContainer.addEventListener('blur', app.handleArtistBlur);
 			artistContainer.addEventListener('keydown', app.handleArtistSelect);
-
+			// adding to page
 			dropdownContent.append(artistContainer);
+		// if displaying recommended artist
 		} else if (searchMethod === 'artist.getSimilar') {
 			app.preparePageForResults(artist, artistContainer);
 		}		
@@ -150,6 +158,7 @@ app.debounce = (func, delay) => {
 	}
 }
 
+// function to get top artists for specific genres
 app.getGenreArtists = (query) => {
 	// initialize the url for last.fm API
 	const url = new URL('https://ws.audioscrobbler.com/2.0/');
@@ -167,7 +176,9 @@ app.getGenreArtists = (query) => {
 			return response.json();
 		})
 		.then((data) => {
+			// extracting array of top artists from returned data 
 			const artistsArray = data.topartists.artist;
+			// looping through each artist and adding to page
 			artistsArray.forEach((artist) => {
 				const artistContainer = document.createElement('li');
 				app.preparePageForResults(artist, artistContainer);
@@ -175,16 +186,21 @@ app.getGenreArtists = (query) => {
 		})
 }
 
+// function to initialize event listener for genre tags
 app.addGenreTagEventListeners = () => {
+	// loop through each genre tag and add event listeners
 	genreTags.forEach((tag) => {
+		// on click, run the API call and adjust the page
 		tag.addEventListener('click', (event) => {
 			app.getGenreArtists(event.target.id);
 			app.changeResultsHeading(event.target.textContent);
 		});
+		// on enter, run the API call and adjust the page
 		tag.addEventListener('keydown', app.handleGenreSelect);
 	})
 }
 
+// function to adjust page for displaying recommended artists and initiates the GIPHY API call
 app.preparePageForResults = (artist, artistContainer) => {
 	resultsList.innerHTML = '';
 	artistContainer.classList.add('artist');
@@ -193,19 +209,22 @@ app.preparePageForResults = (artist, artistContainer) => {
 	app.getArtistPicture(artist, artist.name, artistContainer);
 }
 
-app.getSearchMethod = (method) =>{
+// function to determine the active search method based on user selection
+app.getSearchMethod = (method) => {
 	if (method === 'searchByArtist') {
-		app.toggleSearchMethod(formContainer,genreTagsContainer)
+		app.toggleSearchMethod(formContainer, genreTagsContainer)
 	} else if (method === 'searchByGenre') {
 		app.toggleSearchMethod(genreTagsContainer, formContainer)
 	}
 }
 
+// function to display active search method
 app.toggleSearchMethod = (activeMethod, inactiveMethod) => {
 	activeMethod.classList.add('activeSearch');
 	inactiveMethod.classList.remove('activeSearch');
 }
 
+// function to initialize event listeners for the search method buttons
 app.addSearchButtonEventListeners = () => {
 	searchButtons.forEach((button) => {
 		button.addEventListener('click', ({ target: { id } }) => {
@@ -215,22 +234,31 @@ app.addSearchButtonEventListeners = () => {
 	})
 }
 
+// function to resize the header based on the active search method 
 app.toggleExpandedTopPosition = (searchMethod) => {
+	// only initiate logic if a search has already been made
 	if(headerFlexContainer.classList.contains('topPosition')) {
+		// if exapnded header is open last search is based on genre
 		if (headerFlexContainer.classList.contains('genreTopPosition')) {
+			// if last search is based on genre AND the genre button was clicked, close header
 			if (searchMethod === 'searchByGenre' && genreTagsContainer.classList.contains('activeSearch')) {
 				headerFlexContainer.classList.remove('genreTopPosition');
+			// if last search is based on genre AND the artist button was clicked,resize header for artist
 			} else {
 				headerFlexContainer.classList.add('artistTopPosition');
 				headerFlexContainer.classList.remove('genreTopPosition');
 			}
+		// if expanded header is open and last search is based on artist
 		} else if (headerFlexContainer.classList.contains('artistTopPosition')) {
+			// if last search is based on artist AND the artist button was clicked, close  header
 			if (searchMethod === 'searchByArtist' && formContainer.classList.contains('activeSearch')) {
 				headerFlexContainer.classList.remove('artistTopPosition');
+			// if last search is based on artist AND the genre button was clicked,resize header for genre
 			} else {
 				headerFlexContainer.classList.add('genreTopPosition');
 				headerFlexContainer.classList.remove('artistTopPosition');
 			}
+		// if expanded header is currently closed
 		} else {
 			if (searchMethod === 'searchByGenre') {
 				headerFlexContainer.classList.add('genreTopPosition');
@@ -241,21 +269,25 @@ app.toggleExpandedTopPosition = (searchMethod) => {
 	}
 }
 
+// changing the h2 on the results page based on search result
 app.changeResultsHeading = (keyword) => {
 	resultsHeadingQuery.textContent = keyword;
 }
 
+// handler function to get recommended artists based on dropdown selection
 app.handleArtistClick = ({ target }) => {
 	app.getArtistsInfo(target.textContent, 'artist.getSimilar');
 	dropdown.classList.remove('isActive');
 }
 
+// handler function to get recommended artists based on dropdown selection through the enter key
 app.handleArtistSelect = ({ code, target }) => {
 	if (code === 'Enter') {
 		app.getArtistsInfo(target.textContent, 'artist.getSimilar');
 	}
 }
 
+// handler function to get recommended artists based on genre selection through the enter key
 app.handleGenreSelect = ({ code, target }) => {
 	if (code === 'Enter') {
 		app.getGenreArtists(target.id);
@@ -263,14 +295,16 @@ app.handleGenreSelect = ({ code, target }) => {
 	}
 }
 
+// handler function to determine when to close dropdown
 app.handleArtistBlur = ({ target }) => {
 	const dropdownItems = document.querySelectorAll('.dropdownItem');
-	
+	// if blurring on last list item in dropdown AND the user is not tabbing backwards (shift+tab), close drop down
 	if (target === dropdownItems[dropdownItems.length - 1] && app.activeKeys.indexOf("Shift") === -1) {
 			dropdown.classList.remove('isActive');
 	}
 }
 
+// handler function to determine when to close dropdown when blur from search bar
 app.handleSearchBlur = ({target}) => {
 	if (target !== dropdown && target !== searchInput) {
 		dropdown.classList.remove('isActive');
@@ -279,6 +313,7 @@ app.handleSearchBlur = ({target}) => {
 	}
 }
 
+// handler function to adjust activeKeys array when key is pressed
 app.handleKeydown = ({key}) => {
 	const keyIndex = app.activeKeys.indexOf(key);
 	if (keyIndex === -1) {
@@ -286,6 +321,7 @@ app.handleKeydown = ({key}) => {
 	}
 }
 
+// handler function to adjust activeKeys array when key is released
 app.handleKeyup = ({ key }) => {
 	const keyIndex = app.activeKeys.indexOf(key);
 	if (keyIndex > -1) {
@@ -293,15 +329,18 @@ app.handleKeyup = ({ key }) => {
 	}
 }
 
+// handler function to adjust activeKeys array when focus leaves page
 app.handleBodyBlur = () => {
 	app.activeKeys = [];
 }
 
+// handler function to adjust page sizing when the title is clicked
 app.handleTitle = () => {
 	headerFlexContainer.classList.remove('topPosition', 'artistTopPosition', 'genreTopPosition');
 	main.classList.remove('bigMain');
 }
 
+// handler function for the submit button 
 app.handleSubmitButton = (event) => {
 	event.preventDefault();
 
@@ -310,6 +349,7 @@ app.handleSubmitButton = (event) => {
 	dropdown.classList.remove('isActive');
 }
 
+// init function
 app.init = () => {
 	// event listeners
 	body.addEventListener('blur', app.handleBodyBlur);
