@@ -82,8 +82,6 @@
     }
 }
 
-
-
 @media (max-width: 600px) {
     h1 {
         font-size: calc(2rem + 6vw);
@@ -127,8 +125,8 @@
 
     .genreTag {
         font-size: 1rem;
-        margin: 10px;
         height: 110px;
+        margin: 10px;
         width: 110px;
     }
 
@@ -152,7 +150,7 @@
 }
 
 @media (max-width:500px){
-    .results{
+    .results {
         grid-template-columns: 1fr;
         margin: 0 auto;
         width: 70%;
