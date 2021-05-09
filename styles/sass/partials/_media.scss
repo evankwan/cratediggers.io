@@ -1,0 +1,189 @@
+@media (max-width: 1250px) {
+    .topPosition {
+        flex-direction: column;
+        overflow: hidden;
+
+        .buttonContainer {
+            flex-direction: row;
+        }
+        .topHeaderFlexContainer,
+        .bottomHeaderFlexContainer {
+            flex-basis: 150px;
+            flex-shrink: 0;
+        }
+        .bottomHeaderFlexContainer {
+            align-items: flex-start;
+        }
+        .genreTags {
+            margin: 0;
+        }
+        .genreTagsContainer {
+            opacity: 0;
+            transition: opacity .5s .4s;
+        }
+        .formContainer {
+            opacity: 0;
+            transition: opacity .5s .4s;
+
+        }
+        .buttonContainer .button {
+            margin-right: 0;
+        }
+    }
+
+    .artistTopPosition,
+    .genreTopPosition {
+        height: 300px;
+        overflow: visible;
+        transition: all 1s ease;
+
+        .genreTagsContainer,
+        .formContainer {
+            opacity: 1;
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    .genreTag {
+        font-size: 1.3rem;
+        height: 120px;
+        margin: 10px;
+        width: 120px;
+    }
+    .imageContainer {
+        width: 90%;
+    }
+    
+    .results {
+        grid-template-columns: repeat(3, 1fr);
+        .artist{
+            font-size: 1.2rem;
+        }
+    }
+}
+
+@media (max-width:750px) {
+    .results {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .topPosition .buttonContainer {
+        flex-direction: column;
+        .button {
+            border-radius: 10px;
+            margin: 0 10px;
+            padding: 8px 15px;
+        }
+    }
+}
+
+
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: calc(2rem + 6vw);
+    }
+
+    .subHeading {
+        margin-top: 10px;
+    }
+    
+    .headerFlexContainer {
+        justify-content: space-between;
+    }
+
+    .topHeaderFlexContainer {
+        flex-shrink: 0;
+        flex-basis: 40%;
+        margin-bottom: 10px;
+    }
+
+    .bottomHeaderFlexContainer {
+        width: 100%;
+        flex-basis: 60%;
+    }
+    
+    .search {
+        font-size: 1.5rem;
+        width: 100%;
+    }
+
+    .submitButtonText {
+        display: none;
+    }
+    
+    .fa-search {
+        display: block;
+    }
+
+    .topPosition .genreTags {
+        margin-bottom: 20px;
+    }
+
+    .genreTag {
+        margin: 10px;
+        height: 110px;
+        width: 110px;
+    }
+
+    .topPosition .buttonContainer .button {
+        padding: 10px 8px;
+        width: 100px;
+    }
+
+    .buttonContainer .button{
+        margin: 0 10px;
+        font-size: 1.5rem;
+    }
+
+    .topPosition.genreTopPosition {
+        height: 400px;
+    }
+
+    .topPosition .bottomHeaderFlexContainer{
+        flex-basis: 250px;
+    }
+}
+
+@media (max-width:500px){
+    .results{
+        grid-template-columns: 1fr;
+        width: 70%;
+        margin: 0 auto;
+        .artist{
+            font-size: 1rem;
+        }
+    }
+
+    .topPosition.artistTopPosition {
+        height: 300px;
+    }
+
+    .topPosition {
+        height: 175px;
+    
+        .topHeaderFlexContainer {
+            flex-direction: column;
+            height: 175px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        .buttonContainer {
+            flex-direction: row;
+        }
+    }
+
+    .buttonContainer .button{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .topPosition.genreTopPosition {
+        height: 510px;
+    }
+}

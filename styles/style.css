@@ -442,12 +442,20 @@ header {
 
 .topHeaderFlexContainer,
 .bottomHeaderFlexContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+<<<<<<< HEAD
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+=======
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+>>>>>>> main
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -512,6 +520,11 @@ header {
 }
 
 .topPosition .buttonContainer .button {
+<<<<<<< HEAD
+=======
+  border-radius: 10px;
+  font-size: 1rem;
+>>>>>>> main
   width: 150px;
 }
 
@@ -536,6 +549,19 @@ h1 {
   margin: 10px 0;
 }
 
+<<<<<<< HEAD
+=======
+h2 {
+  color: #f9f9f9;
+}
+
+.subHeading {
+  margin: 0;
+  margin-top: 20px;
+  text-align: center;
+}
+
+>>>>>>> main
 form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -566,9 +592,21 @@ form {
 .button {
   background-color: transparent;
   border: 3px solid white;
+<<<<<<< HEAD
   line-height: 1;
   margin-left: 10px;
   padding: 8px 15px;
+=======
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Crimson Text', serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-left: 10px;
+  padding: 8px 15px;
+  text-transform: uppercase;
+>>>>>>> main
 }
 
 .button:focus, .button:hover {
@@ -576,16 +614,19 @@ form {
 }
 
 .buttonContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+<<<<<<< HEAD
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: default;
           flex-direction: default;
+=======
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+>>>>>>> main
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -596,8 +637,14 @@ form {
 
 .buttonContainer .button {
   border-radius: 20px;
+<<<<<<< HEAD
   padding: 16px 30px;
+=======
+  font-size: 2.5rem;
+  text-transform: uppercase;
+>>>>>>> main
   margin: 0 25px;
+  padding: 16px 30px;
 }
 
 .formContainer {
@@ -624,6 +671,7 @@ form {
 .dropdown {
   left: 0;
   max-width: 760px;
+  left: 0;
   position: absolute;
   top: 100%;
   width: 98%;
@@ -642,6 +690,12 @@ form {
 .dropdownMenu .dropdownItem {
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid transparent;
+<<<<<<< HEAD
+=======
+  color: white;
+  cursor: pointer;
+  list-style-type: none;
+>>>>>>> main
   padding: 10px;
 }
 
@@ -650,6 +704,7 @@ form {
 }
 
 .dropdownMenu .dropdownContent {
+<<<<<<< HEAD
   max-height: 200px;
   overflow-y: scroll;
   padding-left: 0;
@@ -657,6 +712,12 @@ form {
 
 .subHeading {
   margin-top: 20px;
+=======
+  margin: 0;
+  max-height: 200px;
+  overflow-y: scroll;
+  padding-left: 0;
+>>>>>>> main
 }
 
 .genreTagsContainer {

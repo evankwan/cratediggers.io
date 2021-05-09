@@ -1,0 +1,135 @@
+header {
+    background-image: url(../assets/headerBackground.jpg);
+    background-position: center center;
+    background-size: cover;
+}
+
+.headerOverlay {
+    background-color: rgba(47, 42, 42, 0.649);
+}
+
+.headerFlexContainer {
+    @include setFlex(center, center, column);
+
+    height: calc(100vh - 50px);
+    min-height: 750px;
+}
+
+.topHeaderFlexContainer,
+.bottomHeaderFlexContainer {
+    @include setFlex(center, flex-end, column);
+    
+    flex-basis: 50%;
+}
+
+.bottomHeaderFlexContainer{
+    justify-content: flex-start;
+}
+
+.topPosition {
+    height: 150px;
+    justify-content: space-between;
+    min-height: 150px;
+    
+    & > .formContainer{
+        align-items: flex-start;
+        align-self: flex-start;
+        padding-top: 50px;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .button {
+        padding: 7px 15px;
+    }
+
+    & > .formContainer .dropdownItem {
+        background-color: rgba(79, 69, 62, 1);
+    }
+
+    .headerFlexContainer {
+        flex-wrap: wrap;
+    }
+
+    .buttonContainer {
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        .button {
+            width: 150px;
+        }
+    }
+
+    .genreTag {
+        font-weight: bold;
+        height: 100px;
+        margin: 5px;
+        width: 100px;
+    }
+    
+    .dropdown {
+        left: 0;
+        width: 95%;
+
+        .dropdownItem {
+            background-color:rgba(36, 36, 36, 1);
+        }
+    }
+}
+
+h1 {
+    font-size: 5rem;
+    margin: 10px 0;
+}
+
+form {
+    @include setFlex(center, space-between, default);
+    
+    max-width: 760px;
+}
+
+.search {
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid rgba(255, 255, 255, 1);
+    padding: 5px;
+    width: 80%;
+}
+
+.button {
+    background-color: transparent;
+    border: 3px solid white;
+    line-height: 1;
+    margin-left: 10px;
+    padding: 8px 15px;
+
+    &:focus,
+    &:hover {
+        border: 3px solid gold;
+    }
+}
+
+.buttonContainer {
+    @include setFlex(center, center, default);
+    
+    margin-top: 40px;
+
+    .button {
+        border-radius: 20px;
+        padding: 16px 30px;
+        margin: 0 25px;
+    }
+}
+
+.formContainer {
+    @include setFlex(center, center, column);
+
+    position: relative;
+    transition: opacity 1s ease;
+}
+
+.subHeading {
+    margin-top: 20px;
+}
