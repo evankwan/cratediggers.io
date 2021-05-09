@@ -6,12 +6,18 @@ html {
 // sizing
 .formContainer,
 .genreTagsContainer {
-    width: 0;
+    height: 0;
 }
 
 .formContainer,
 .genreTagsContainer {
-    height: 0;
+    width: 0;
+}
+
+.headerOverlay,
+.topPosition .buttonContainer,
+.topPosition .topHeaderFlexContainer {
+    height: 100%;
 }
 
 .activeSearch,
@@ -23,14 +29,137 @@ form,
     width: 100%;
 }
 
-
-
 // transitions
 header,
 .headerFlexContainer {
     transition: all 1s ease;
 }
 
+// flex
+.topPosition,
+.topPosition .bottomHeaderFlexContainer,
+.topPosition .topHeaderFlexContainer {
+    flex-direction: row;
+}
+
+// display
+.dropdown,
+.fa-search,
+main,
+.topPosition h2 {
+    display: none;
+}
+
+.formContainer,
+.genreTagsContainer {
+    opacity: 0;
+}
+
+.formContainer,
+.genreTagsContainer {
+    overflow: hidden;
+}
+
+.formContainer,
+.genreTagsContainer {
+    visibility: hidden;
+}
+
+// box model
+.button,
+.results .artist a {
+    border-radius: 3px;
+}
+
+.results .artist,
+.topPosition .buttonContainer .button {
+    border-radius: 10px;
+}
+
+.dropdownMenu .dropdownContent,
+footer p,
+.results,
+.resultsHeading,
+.subHeading,
+.topPosition .buttonContainer {
+    margin: 0;
+}
+
+.dropdownMenu .dropdownItem:focus,
+.dropdownMenu .dropdownItem:hover,
+.genreTag.hipHop:focus,
+.genreTag.hipHop:hover,
+.genreTag.kpop:focus,
+.genreTag.kpop:hover,
+.genreTag.pop:focus,
+.genreTag.pop:hover,
+.genreTag.rnb:focus,
+.genreTag.rnb:hover,
+.genreTag.rock:focus,
+.genreTag.rock:hover,
+.search:focus {
+    outline: none;
+}
+
+// cursor
+.button,
+.dropdownMenu .dropdownItem,
+.genreTag,
+h1 {
+    cursor: pointer;
+}
+
+// font styling
+.button,
+.dropdownMenu .dropdownItem,
+footer p,
+.genreTag,
+h1,
+h2,
+.search {
+    color: white;
+}
+
+.button,
+h1,
+.results .artist {
+    font-family: 'Crimson Text', serif;
+}
+
+.results .artist a,
+.topPosition .genreTag,
+.topPosition .buttonContainer .button {
+    font-size: 1rem;
+}
+
+.button,
+.results .artist,
+.topPosition .search {
+    font-size: 1.5rem;
+}
+
+.buttonContainer .button,
+.search {
+    font-size: 2.5rem;
+}
+
+.results .artist,
+.resultsHeading,
+.subHeading {
+    text-align: center;
+}
+
+.button,
+.buttonContainer .button {
+    text-transform: uppercase;
+}
+
+// lists
+.dropdownMenu .dropdownItem,
+.genreTags,
+.results {
+    list-style-type: none;
+}
 
 // images
 img {
