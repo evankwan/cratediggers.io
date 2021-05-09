@@ -442,20 +442,12 @@ header {
 
 .topHeaderFlexContainer,
 .bottomHeaderFlexContainer {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-<<<<<<< HEAD
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-=======
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
->>>>>>> main
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -520,11 +512,6 @@ header {
 }
 
 .topPosition .buttonContainer .button {
-<<<<<<< HEAD
-=======
-  border-radius: 10px;
-  font-size: 1rem;
->>>>>>> main
   width: 150px;
 }
 
@@ -549,19 +536,6 @@ h1 {
   margin: 10px 0;
 }
 
-<<<<<<< HEAD
-=======
-h2 {
-  color: #f9f9f9;
-}
-
-.subHeading {
-  margin: 0;
-  margin-top: 20px;
-  text-align: center;
-}
-
->>>>>>> main
 form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -592,21 +566,9 @@ form {
 .button {
   background-color: transparent;
   border: 3px solid white;
-<<<<<<< HEAD
   line-height: 1;
   margin-left: 10px;
   padding: 8px 15px;
-=======
-  border-radius: 3px;
-  color: white;
-  cursor: pointer;
-  font-family: 'Crimson Text', serif;
-  font-size: 1.5rem;
-  line-height: 1;
-  margin-left: 10px;
-  padding: 8px 15px;
-  text-transform: uppercase;
->>>>>>> main
 }
 
 .button:focus, .button:hover {
@@ -614,19 +576,16 @@ form {
 }
 
 .buttonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-<<<<<<< HEAD
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: default;
           flex-direction: default;
-=======
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
->>>>>>> main
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -637,14 +596,8 @@ form {
 
 .buttonContainer .button {
   border-radius: 20px;
-<<<<<<< HEAD
   padding: 16px 30px;
-=======
-  font-size: 2.5rem;
-  text-transform: uppercase;
->>>>>>> main
   margin: 0 25px;
-  padding: 16px 30px;
 }
 
 .formContainer {
@@ -668,10 +621,13 @@ form {
   transition: opacity 1s ease;
 }
 
+.subHeading {
+  margin-top: 20px;
+}
+
 .dropdown {
   left: 0;
   max-width: 760px;
-  left: 0;
   position: absolute;
   top: 100%;
   width: 98%;
@@ -690,12 +646,6 @@ form {
 .dropdownMenu .dropdownItem {
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid transparent;
-<<<<<<< HEAD
-=======
-  color: white;
-  cursor: pointer;
-  list-style-type: none;
->>>>>>> main
   padding: 10px;
 }
 
@@ -704,20 +654,9 @@ form {
 }
 
 .dropdownMenu .dropdownContent {
-<<<<<<< HEAD
   max-height: 200px;
   overflow-y: scroll;
   padding-left: 0;
-}
-
-.subHeading {
-  margin-top: 20px;
-=======
-  margin: 0;
-  max-height: 200px;
-  overflow-y: scroll;
-  padding-left: 0;
->>>>>>> main
 }
 
 .genreTagsContainer {
@@ -959,10 +898,6 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .bottomHeaderFlexContainer,
-  .search {
-    width: 100%;
-  }
   h1 {
     font-size: calc(2rem + 6vw);
   }
@@ -984,9 +919,11 @@ footer {
   .bottomHeaderFlexContainer {
     -ms-flex-preferred-size: 60%;
         flex-basis: 60%;
+    width: 100%;
   }
   .search {
     font-size: 1.5rem;
+    width: 100%;
   }
   .submitButtonText {
     display: none;
@@ -998,8 +935,8 @@ footer {
     margin-bottom: 20px;
   }
   .genreTag {
-    height: 110px;
     margin: 10px;
+    height: 110px;
     width: 110px;
   }
   .topPosition .buttonContainer .button {
@@ -1026,6 +963,9 @@ footer {
     margin: 0 auto;
     width: 70%;
   }
+  .results .artist {
+    font-size: 1rem;
+  }
   .topPosition.artistTopPosition {
     height: 300px;
   }
@@ -1049,8 +989,7 @@ footer {
         -ms-flex-direction: row;
             flex-direction: row;
   }
-  .buttonContainer .button,
-  .results .artist {
+  .buttonContainer .button {
     font-size: 1rem;
   }
 }
