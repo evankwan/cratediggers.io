@@ -27,6 +27,7 @@ header {
 }
 
 .topPosition {
+    flex-direction: row;
     height: 150px;
     justify-content: space-between;
     min-height: 150px;

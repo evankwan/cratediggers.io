@@ -9,7 +9,7 @@
 }
 
 .genreTags {
-    @include setFlex(center, center, default, wrap);
+    @include setFlex(center, center, row, wrap);
 
     padding: 0;
 }
@@ -26,7 +26,7 @@
 }
 
 .genreTag {
-    @include setFlex(center, center, default);
+    @include setFlex(center, center, row);
     
     border: 5px solid white;
     border-radius: 50%;
@@ -94,7 +94,7 @@
 }
 
 footer {
-    @include setFlex(center, center, default);
+    @include setFlex(center, center, row);
 
     background-color: rgba(34, 34, 34, 1);
     height: 50px;
