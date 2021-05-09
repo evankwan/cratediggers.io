@@ -8,13 +8,11 @@ header {
     background-image: url(../assets/headerBackground.jpg);
     background-position: center center;
     background-size: cover;
-    transition: all 1s ease;
 }
 
 .headerOverlay {
     background-color: rgba(47, 42, 42, 0.649);
     height: 100%;
-    width: 100%;
 }
 
 .headerFlexContainer {
@@ -24,13 +22,11 @@ header {
     height: calc(100vh - 50px);
     justify-content: center;
     min-height: 750px;
-    transition: all 1s ease;
-    width: 100%;
 }
 
 .topHeaderFlexContainer,
-.bottomHeaderFlexContainer{
-    display:flex;
+.bottomHeaderFlexContainer {
+    display: flex;
     flex-direction: column;
     align-items: center;
     flex-basis: 50%;
@@ -52,6 +48,7 @@ header {
         align-self: flex-start;
         padding-top: 50px;
     }
+
     h1 {
         font-size: 3.5rem;
     }
@@ -80,25 +77,25 @@ header {
         flex-direction: row;
         height: 100%;
     }
+
     .buttonContainer{
         flex-direction: column;
         height: 100%;
         justify-content: space-evenly;
         margin: 0;
-        .button{
+
+        .button {
             font-size: 1rem;
             border-radius: 10px;
             width: 150px;
         }
     }
+
     .bottomHeaderFlexContainer{
         flex-direction: row;
     }
-    form{
-        width: 100%;
-    }
 
-    .genreTag{
+    .genreTag {
         font-size: 1rem;
         height: 100px;
         width: 100px;
@@ -109,7 +106,9 @@ header {
     .dropdown{
         left: 0;
         width: 95%;
-        .dropdownItem{
+
+
+        .dropdownItem {
             background-color:rgba(36,36,36,1);
         }
     }
@@ -132,7 +131,6 @@ form {
     display: flex;
     justify-content: space-between;
     max-width: 760px;
-    width: 100%;
 }
 
 .search {
@@ -144,8 +142,8 @@ form {
     padding: 5px;
     width: 80%;
 
-    &:focus{
-        outline:none;
+    &:focus {
+        outline: none;
     }
 }
 
@@ -173,7 +171,8 @@ form {
     align-items: center;
     justify-content: center;
     margin-top: 40px;
-    .button{
+
+    .button {
         font-size: 2.5rem;
         border-radius: 20px;
         text-transform: uppercase;
@@ -182,10 +181,9 @@ form {
     }
 }
 
-.formContainer{
+.formContainer {
     display: flex;
     flex-direction: column;
-    height: 0;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -193,7 +191,6 @@ form {
     overflow: hidden;
     transition: opacity 1s ease;
     visibility: hidden;
-    width: 0;
 }
 
 .dropdown {
@@ -206,11 +203,12 @@ form {
 }
 
 .isActive {
-    display:flex;
+    display: flex;
 }
 
 .dropdownMenu {
     width: 80%;
+
     .dropdownItem {
         background-color: rgba(255, 255, 255, 0.2);
         list-style-type: none;
@@ -220,7 +218,7 @@ form {
         cursor: pointer;
 
         &:hover,
-        &:focus{
+        &:focus {
             border: 1px solid white;
             outline: none;
         }
@@ -240,12 +238,10 @@ form {
     text-align: center;
 }
 
-.genreTagsContainer{
-    height: 0;
+.genreTagsContainer {
     opacity: 0;
     overflow: hidden;
     visibility: hidden;
-    width: 0;
     transition: opacity 1s ease;
 }
 
@@ -256,15 +252,13 @@ form {
     list-style: none;
     justify-content: center;
     padding: 0;
-    width: 100%;
 }
 
-.activeSearch{
+.activeSearch {
     height: auto;
     visibility: visible;
     opacity: 1;
     overflow: visible;
-    width: 100%;
 
     &.formContainer {
         margin: 20px;

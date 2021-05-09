@@ -239,15 +239,29 @@ html {
   font-size: 125%;
 }
 
-.wrapper {
-  margin: 0 auto;
-  max-width: 1350px;
-  width: 95%;
+.formContainer,
+.genreTagsContainer {
+  width: 0;
 }
 
-.imageContainer {
-  max-width: 250px;
+.formContainer,
+.genreTagsContainer {
+  height: 0;
+}
+
+.activeSearch,
+form,
+.genreTags,
+.headerFlexContainer,
+.headerOverlay,
+.topPosition form {
   width: 100%;
+}
+
+header,
+.headerFlexContainer {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 img {
@@ -256,18 +270,26 @@ img {
   width: 100%;
 }
 
+.imageContainer {
+  max-width: 250px;
+  width: 100%;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1350px;
+  width: 95%;
+}
+
 header {
   background-image: url(../assets/headerBackground.jpg);
   background-position: center center;
   background-size: cover;
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
 }
 
 .headerOverlay {
   background-color: rgba(47, 42, 42, 0.649);
   height: 100%;
-  width: 100%;
 }
 
 .headerFlexContainer {
@@ -286,9 +308,6 @@ header {
       -ms-flex-pack: center;
           justify-content: center;
   min-height: 750px;
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-  width: 100%;
 }
 
 .topHeaderFlexContainer,
@@ -395,10 +414,6 @@ header {
           flex-direction: row;
 }
 
-.topPosition form {
-  width: 100%;
-}
-
 .topPosition .genreTag {
   font-size: 1rem;
   height: 100px;
@@ -439,7 +454,6 @@ form {
       -ms-flex-pack: justify;
           justify-content: space-between;
   max-width: 760px;
-  width: 100%;
 }
 
 .search {
@@ -503,7 +517,6 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 0;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -516,7 +529,6 @@ form {
   -webkit-transition: opacity 1s ease;
   transition: opacity 1s ease;
   visibility: hidden;
-  width: 0;
 }
 
 .dropdown {
@@ -566,11 +578,9 @@ form {
 }
 
 .genreTagsContainer {
-  height: 0;
   opacity: 0;
   overflow: hidden;
   visibility: hidden;
-  width: 0;
   -webkit-transition: opacity 1s ease;
   transition: opacity 1s ease;
 }
@@ -589,7 +599,6 @@ form {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 0;
-  width: 100%;
 }
 
 .activeSearch {
@@ -597,7 +606,6 @@ form {
   visibility: visible;
   opacity: 1;
   overflow: visible;
-  width: 100%;
 }
 
 .activeSearch.formContainer {

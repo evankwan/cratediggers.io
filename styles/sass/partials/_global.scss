@@ -1,11 +1,42 @@
+// global font size set
 html {
     font-size: 125%;
 }
 
-.wrapper {
-    margin: 0 auto;
-    max-width: 1350px;
-    width: 95%;
+// sizing
+.formContainer,
+.genreTagsContainer {
+    width: 0;
+}
+
+.formContainer,
+.genreTagsContainer {
+    height: 0;
+}
+
+.activeSearch,
+form,
+.genreTags,
+.headerFlexContainer,
+.headerOverlay,
+.topPosition form {
+    width: 100%;
+}
+
+
+
+// transitions
+header,
+.headerFlexContainer {
+    transition: all 1s ease;
+}
+
+
+// images
+img {
+    display: block;
+    max-width: 100%;
+    width: 100%;
 }
 
 .imageContainer {
@@ -13,8 +44,9 @@ html {
     width: 100%;
 }
 
-img {
-    display: block;
-    max-width: 100%;
-    width: 100%;
+// utility classes
+.wrapper {
+    margin: 0 auto;
+    max-width: 1350px;
+    width: 95%;
 }
