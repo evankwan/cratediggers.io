@@ -1,0 +1,37 @@
+.dropdown {
+    display: none;
+    max-width: 760px;
+    left: 0;
+    position: absolute;
+    top: 100%;
+    width: 98%;
+}
+
+.isActive {
+    display: flex;
+}
+
+.dropdownMenu {
+    width: 80%;
+    .dropdownItem {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid transparent;
+        color: white;
+        cursor: pointer;
+        list-style-type: none;
+        padding: 10px;
+
+        &:hover,
+        &:focus{
+            border: 1px solid white;
+            outline: none;
+        }
+    }
+
+    .dropdownContent {
+		margin: 0;
+        max-height: 200px;
+        overflow-y: scroll;
+        padding-left: 0;
+    }
+}
