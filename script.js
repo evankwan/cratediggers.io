@@ -91,11 +91,11 @@ app.displayArtistsInfo = (data, searchMethod) => {
 	let artistsResults;
 
 	// checking for if we're displaying artist serach or artist recommendation and assigning the correct path to artistResults
-	if(searchMethod === 'artist.search'){
+	if (searchMethod === 'artist.search') {
 		if (data.results === undefined) {
 			dropdown.classList.remove('isActive');
 			artistsResults = [];
-		}else{
+		} else {
 			artistsResults = data.results.artistmatches.artist
 		}
 	} else if (searchMethod === 'artist.getSimilar'){
@@ -163,12 +163,12 @@ app.getGenreArtists = (query) => {
 	})
 
 	fetch(url)
-		.then(response => {
+		.then((response) => {
 			return response.json();
 		})
-		.then(data => {
+		.then((data) => {
 			const artistsArray = data.topartists.artist;
-			artistsArray.forEach(artist => {
+			artistsArray.forEach((artist) => {
 				const artistContainer = document.createElement('li');
 				app.preparePageForResults(artist, artistContainer);
 			})
@@ -176,7 +176,7 @@ app.getGenreArtists = (query) => {
 }
 
 app.addGenreTagEventListeners = () => {
-	genreTags.forEach(tag => {
+	genreTags.forEach((tag) => {
 		tag.addEventListener('click', (event) => {
 			app.getGenreArtists(event.target.id);
 			app.changeResultsHeading(event.target.textContent);
@@ -194,20 +194,20 @@ app.preparePageForResults = (artist, artistContainer) => {
 }
 
 app.getSearchMethod = (method) =>{
-	if(method === 'searchByArtist'){
+	if (method === 'searchByArtist') {
 		app.toggleSearchMethod(formContainer,genreTagsContainer)
-	}else if(method === 'searchByGenre'){
+	} else if (method === 'searchByGenre') {
 		app.toggleSearchMethod(genreTagsContainer, formContainer)
 	}
 }
 
-app.toggleSearchMethod = (activeMethod, inactiveMethod) =>{
+app.toggleSearchMethod = (activeMethod, inactiveMethod) => {
 	activeMethod.classList.add('activeSearch');
 	inactiveMethod.classList.remove('activeSearch');
 }
 
-app.addSearchButtonEventListeners = () =>{
-	searchButtons.forEach(button =>{
+app.addSearchButtonEventListeners = () => {
+	searchButtons.forEach((button) => {
 		button.addEventListener('click', ({ target: { id } }) => {
 			app.toggleExpandedTopPosition(id);
 			app.getSearchMethod(id);
@@ -272,9 +272,9 @@ app.handleArtistBlur = ({ target }) => {
 }
 
 app.handleSearchBlur = ({target}) => {
-	if(target !== dropdown && target !== searchInput){
+	if (target !== dropdown && target !== searchInput) {
 		dropdown.classList.remove('isActive');
-	} else if(target === searchInput){
+	} else if(target === searchInput) {
 		dropdown.classList.add('isActive');
 	}
 }
@@ -291,7 +291,6 @@ app.handleKeyup = ({ key }) => {
 	if (keyIndex > -1) {
 		app.activeKeys.splice(keyIndex, 1);
 	}
-	
 }
 
 app.handleBodyBlur = () => {
