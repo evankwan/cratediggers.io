@@ -2,61 +2,43 @@ header {
     background-image: url(../assets/headerBackground.jpg);
     background-position: center center;
     background-size: cover;
-    transition: all 1s ease;
 }
 
 .headerOverlay {
     background-color: rgba(47, 42, 42, 0.649);
-    height: 100%;
-    width: 100%;
 }
 
 .headerFlexContainer {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    @include setFlex(center, center, column);
+
     height: calc(100vh - 50px);
-    justify-content: center;
     min-height: 750px;
-    transition: all 1s ease;
-    width: 100%;
 }
 
 .topHeaderFlexContainer,
 .bottomHeaderFlexContainer {
-    align-items: center;
-    display: flex;
+    @include setFlex(center, flex-end, column);
+    
     flex-basis: 50%;
-    flex-direction: column;
-    justify-content: flex-end;
 }
 
-.bottomHeaderFlexContainer {
+.bottomHeaderFlexContainer{
     justify-content: flex-start;
 }
 
 .topPosition {
-    flex-direction: row;
     height: 150px;
     justify-content: space-between;
     min-height: 150px;
     
-    & > .formContainer {
+    & > .formContainer{
         align-items: flex-start;
         align-self: flex-start;
         padding-top: 50px;
     }
-	
+
     h1 {
         font-size: 3.5rem;
-    }
-
-    h2 {
-        display: none;
-    }
-
-    .search {
-        font-size: 1.5rem;
     }
 
     .button {
@@ -64,137 +46,90 @@ header {
     }
 
     & > .formContainer .dropdownItem {
-        background-color: rgb(79, 69, 62);
+        background-color: rgba(79, 69, 62, 1);
     }
 
     .headerFlexContainer {
         flex-wrap: wrap;
     }
 
-    .topHeaderFlexContainer {
-        flex-direction: row;
-        height: 100%;
-    }
-
     .buttonContainer {
         flex-direction: column;
-        height: 100%;
         justify-content: space-evenly;
-        margin: 0;
-        .button{
-            border-radius: 10px;
-            font-size: 1rem;
+
+        .button {
             width: 150px;
         }
     }
 
-    .bottomHeaderFlexContainer {
-        flex-direction: row;
-    }
-
-    form {
-        width: 100%;
-    }
-
     .genreTag {
-        font-size: 1rem;
-        height: 100px;
-        width: 100px;
-        margin: 5px;
         font-weight: bold;
+        height: 100px;
+        margin: 5px;
+        width: 100px;
     }
     
     .dropdown {
         left: 0;
         width: 95%;
-        .dropdownItem{
-            background-color:rgba(36,36,36,1);
+
+        .dropdownItem {
+            background-color:rgba(36, 36, 36, 1);
         }
     }
 }
 
 h1 {
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    font-family: 'Crimson Text', serif;
     font-size: 5rem;
     margin: 10px 0;
 }
 
-h2 {
-    color: rgb(249, 249, 249);
-}
-
-.subHeading {
-    margin: 0;
-    margin-top: 20px;
-    text-align: center;
-}
-
 form {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+    @include setFlex(center, space-between, default);
+    
     max-width: 760px;
-    width: 100%;
 }
 
 .search {
     background-color: transparent;
     border: none;
-    border-bottom: 3px solid rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    font-size: 2.5rem;
+    border-bottom: 3px solid rgba(255, 255, 255, 1);
     padding: 5px;
     width: 80%;
-    &:focus{
-        outline:none;
-    }
 }
 
 .button {
-	background-color: transparent;
-    border: 3px solid rgb(255, 255, 255);
-    border-radius: 3px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    font-family: 'Crimson Text', serif;
-    font-size: 1.5rem;
+    background-color: transparent;
+    border: 3px solid white;
     line-height: 1;
     margin-left: 10px;
     padding: 8px 15px;
-    text-transform: uppercase;
+
     &:focus,
     &:hover {
-        border: 3px solid rgb(255, 215, 0);
+        border: 3px solid gold;
     }
 }
 
 .buttonContainer {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+    @include setFlex(center, center, default);
+    
     margin-top: 40px;
 
     .button {
         border-radius: 20px;
-        font-size: 2.5rem;
-        text-transform: uppercase;
-        margin: 0 25px;
         padding: 16px 30px;
+        margin: 0 25px;
     }
 }
 
 .formContainer {
-    display: flex;
-    flex-direction: column;
-    height: 0;
-    justify-content: center;
-    align-items: center;
+    @include setFlex(center, center, column);
+
     position: relative;
-    opacity: 0;
-    overflow: hidden;
     transition: opacity 1s ease;
-    visibility: hidden;
-    width: 0;
+}
+
+.subHeading {
+    margin-top: 20px;
 }

@@ -1,36 +1,24 @@
 @import "partials/setup";
 @import "partials/mixin";
 @import "partials/global";
-
 @import "partials/header";
-
 @import "partials/dropdown";
 
-.genreTagsContainer{
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    visibility: hidden;
-    width: 0;
+.genreTagsContainer {
     transition: opacity 1s ease;
 }
 
 .genreTags {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    justify-content: center;
+    @include setFlex(center, center, default, wrap);
+
     padding: 0;
-    width: 100%;
 }
 
 .activeSearch {
     height: auto;
-    visibility: visible;
     opacity: 1;
     overflow: visible;
-    width: 100%;
+    visibility: visible;
 
     &.formContainer {
         margin: 20px;
@@ -38,118 +26,78 @@
 }
 
 .genreTag {
-    align-items: center;
+    @include setFlex(center, center, default);
+    
     border: 5px solid white;
     border-radius: 50%;
-    color: white;
-    cursor: pointer;
-    display: flex;
     font-size: 2rem;
     height: 160px;
-    justify-content: center;
-    width: 160px;
     margin: 20px;
+    width: 160px;
 
     &.rnb:focus,
     &.rnb:hover {
         border-color: rgb(98, 98, 180);
-        outline: none;
     }
 
     &.pop:focus,
     &.pop:hover {
         border-color: rgb(251, 79, 176);
-        outline: none;
     }
 
     &.rock:focus,
     &.rock:hover {
         border-color: rgb(254, 64, 64);
-        outline: none;
     }
 
     &.hipHop:focus,
     &.hipHop:hover {
         border-color: rgb(249, 177, 61);
-        outline: none;
     }
     
     &.kpop:focus,
     &.kpop:hover {
         border-color: rgb(83, 226, 86);
-        outline: none;
     }
 }
 
-main {
-    display: none;
-}
-
-.bigMain{
-    display: block;
+.bigMain {
     background-color: rgba(108, 101, 89, 1);
+    display: block;
     min-height: calc(100vh - 150px - 50px);
     padding-top: 40px;
 }
 
-
-.resultsHeading {
-    text-align: center;
-    margin: 0;
-}
-
-.results{
+.results {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-auto-rows: 1fr;
     grid-gap: 20px;
-    list-style: none;
-    margin: 0;
     padding: 40px 0;
     
-    .artist{
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        flex-direction: column;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px 0 black;
+    .artist {
+        @include setFlex(center, space-between, column);
+        
         background-color: rgba(249, 249, 249, 1);
-        text-align: center;
+        box-shadow: 0 2px 5px 0 black;
         padding: 15px;
-        font-family: 'Crimson Text', serif;
-        font-size: 1.5rem;
 
         a {
-            font-size: 1rem;
-            text-decoration: none;
-            padding: 10px;
-            margin-top: 10px;
             border: 1px solid black;
             color: rgba(171, 34, 23, 1);
-            border-radius: 3px;
+            margin-top: 10px;
+            padding: 10px;
+            text-decoration: none;
         }
     }
 }
 
-.fa-search {
-    display: none;
-}
+footer {
+    @include setFlex(center, center, default);
 
-footer{
-    background-color: #222;
+    background-color: rgba(34, 34, 34, 1);
     height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    p{
-        margin: 0;
-        color:white;
-    }
 }
 
-
-
-@import "partials/media"
+@import "partials/media";

@@ -239,15 +239,158 @@ html {
   font-size: 125%;
 }
 
-.wrapper {
-  margin: 0 auto;
-  max-width: 1350px;
-  width: 95%;
+.formContainer,
+.genreTagsContainer {
+  height: 0;
 }
 
-.imageContainer {
-  max-width: 250px;
+.formContainer,
+.genreTagsContainer {
+  width: 0;
+}
+
+.headerOverlay,
+.topPosition .buttonContainer,
+.topPosition .topHeaderFlexContainer {
+  height: 100%;
+}
+
+.activeSearch,
+form,
+.genreTags,
+.headerFlexContainer,
+.headerOverlay,
+.topPosition form {
   width: 100%;
+}
+
+header,
+.headerFlexContainer {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.topPosition,
+.topPosition .bottomHeaderFlexContainer,
+.topPosition .topHeaderFlexContainer {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.dropdown,
+.fa-search,
+main,
+.topPosition h2 {
+  display: none;
+}
+
+.formContainer,
+.genreTagsContainer {
+  opacity: 0;
+}
+
+.formContainer,
+.genreTagsContainer {
+  overflow: hidden;
+}
+
+.formContainer,
+.genreTagsContainer {
+  visibility: hidden;
+}
+
+.button,
+.results .artist a {
+  border-radius: 3px;
+}
+
+.results .artist,
+.topPosition .buttonContainer .button {
+  border-radius: 10px;
+}
+
+.dropdownMenu .dropdownContent,
+footer p,
+.results,
+.resultsHeading,
+.subHeading,
+.topPosition .buttonContainer {
+  margin: 0;
+}
+
+.dropdownMenu .dropdownItem:focus,
+.dropdownMenu .dropdownItem:hover,
+.genreTag.hipHop:focus,
+.genreTag.hipHop:hover,
+.genreTag.kpop:focus,
+.genreTag.kpop:hover,
+.genreTag.pop:focus,
+.genreTag.pop:hover,
+.genreTag.rnb:focus,
+.genreTag.rnb:hover,
+.genreTag.rock:focus,
+.genreTag.rock:hover,
+.search:focus {
+  outline: none;
+}
+
+.button,
+.dropdownMenu .dropdownItem,
+.genreTag,
+h1 {
+  cursor: pointer;
+}
+
+.button,
+.dropdownMenu .dropdownItem,
+footer p,
+.genreTag,
+h1,
+h2,
+.search {
+  color: white;
+}
+
+.button,
+h1,
+.results .artist {
+  font-family: 'Crimson Text', serif;
+}
+
+.results .artist a,
+.topPosition .genreTag,
+.topPosition .buttonContainer .button {
+  font-size: 1rem;
+}
+
+.button,
+.results .artist,
+.topPosition .search {
+  font-size: 1.5rem;
+}
+
+.buttonContainer .button,
+.search {
+  font-size: 2.5rem;
+}
+
+.results .artist,
+.resultsHeading,
+.subHeading {
+  text-align: center;
+}
+
+.button,
+.buttonContainer .button {
+  text-transform: uppercase;
+}
+
+.dropdownMenu .dropdownItem,
+.genreTags,
+.results {
+  list-style-type: none;
 }
 
 img {
@@ -256,39 +399,45 @@ img {
   width: 100%;
 }
 
+.imageContainer {
+  max-width: 250px;
+  width: 100%;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1350px;
+  width: 95%;
+}
+
 header {
   background-image: url(../assets/headerBackground.jpg);
   background-position: center center;
   background-size: cover;
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
 }
 
 .headerOverlay {
   background-color: rgba(47, 42, 42, 0.649);
-  height: 100%;
-  width: 100%;
 }
 
 .headerFlexContainer {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: calc(100vh - 50px);
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-wrap: no-wrap;
+      flex-wrap: no-wrap;
+  height: calc(100vh - 50px);
   min-height: 750px;
-  -webkit-transition: all 1s ease;
-  transition: all 1s ease;
-  width: 100%;
 }
 
 .topHeaderFlexContainer,
@@ -299,8 +448,14 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+<<<<<<< HEAD
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+=======
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
+>>>>>>> main
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -308,6 +463,10 @@ header {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -ms-flex-wrap: no-wrap;
+      flex-wrap: no-wrap;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
 }
 
 .bottomHeaderFlexContainer {
@@ -317,10 +476,6 @@ header {
 }
 
 .topPosition {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   height: 150px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -341,14 +496,6 @@ header {
   font-size: 3.5rem;
 }
 
-.topPosition h2 {
-  display: none;
-}
-
-.topPosition .search {
-  font-size: 1.5rem;
-}
-
 .topPosition .button {
   padding: 7px 15px;
 }
@@ -362,49 +509,30 @@ header {
       flex-wrap: wrap;
 }
 
-.topPosition .topHeaderFlexContainer {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  height: 100%;
-}
-
 .topPosition .buttonContainer {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100%;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  margin: 0;
 }
 
 .topPosition .buttonContainer .button {
+<<<<<<< HEAD
+=======
   border-radius: 10px;
   font-size: 1rem;
+>>>>>>> main
   width: 150px;
 }
 
-.topPosition .bottomHeaderFlexContainer {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.topPosition form {
-  width: 100%;
-}
-
 .topPosition .genreTag {
-  font-size: 1rem;
-  height: 100px;
-  width: 100px;
-  margin: 5px;
   font-weight: bold;
+  height: 100px;
+  margin: 5px;
+  width: 100px;
 }
 
 .topPosition .dropdown {
@@ -417,13 +545,12 @@ header {
 }
 
 h1 {
-  color: white;
-  cursor: pointer;
-  font-family: 'Crimson Text', serif;
   font-size: 5rem;
   margin: 10px 0;
 }
 
+<<<<<<< HEAD
+=======
 h2 {
   color: #f9f9f9;
 }
@@ -434,37 +561,42 @@ h2 {
   text-align: center;
 }
 
+>>>>>>> main
 form {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: default;
+          flex-direction: default;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-wrap: no-wrap;
+      flex-wrap: no-wrap;
   max-width: 760px;
-  width: 100%;
 }
 
 .search {
   background-color: transparent;
   border: none;
   border-bottom: 3px solid white;
-  color: white;
-  font-size: 2.5rem;
   padding: 5px;
   width: 80%;
-}
-
-.search:focus {
-  outline: none;
 }
 
 .button {
   background-color: transparent;
   border: 3px solid white;
+<<<<<<< HEAD
+  line-height: 1;
+  margin-left: 10px;
+  padding: 8px 15px;
+=======
   border-radius: 3px;
   color: white;
   cursor: pointer;
@@ -474,6 +606,7 @@ form {
   margin-left: 10px;
   padding: 8px 15px;
   text-transform: uppercase;
+>>>>>>> main
 }
 
 .button:focus, .button:hover {
@@ -484,19 +617,32 @@ form {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+<<<<<<< HEAD
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: default;
+          flex-direction: default;
+=======
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+>>>>>>> main
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-wrap: no-wrap;
+      flex-wrap: no-wrap;
   margin-top: 40px;
 }
 
 .buttonContainer .button {
   border-radius: 20px;
+<<<<<<< HEAD
+  padding: 16px 30px;
+=======
   font-size: 2.5rem;
   text-transform: uppercase;
+>>>>>>> main
   margin: 0 25px;
   padding: 16px 30px;
 }
@@ -505,28 +651,25 @@ form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 0;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-wrap: no-wrap;
+      flex-wrap: no-wrap;
   position: relative;
-  opacity: 0;
-  overflow: hidden;
   -webkit-transition: opacity 1s ease;
   transition: opacity 1s ease;
-  visibility: hidden;
-  width: 0;
 }
 
 .dropdown {
-  display: none;
+  left: 0;
   max-width: 760px;
   left: 0;
   position: absolute;
@@ -547,57 +690,65 @@ form {
 .dropdownMenu .dropdownItem {
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid transparent;
+<<<<<<< HEAD
+=======
   color: white;
   cursor: pointer;
   list-style-type: none;
+>>>>>>> main
   padding: 10px;
 }
 
-.dropdownMenu .dropdownItem:hover, .dropdownMenu .dropdownItem:focus {
+.dropdownMenu .dropdownItem:focus, .dropdownMenu .dropdownItem:hover {
   border: 1px solid white;
-  outline: none;
 }
 
 .dropdownMenu .dropdownContent {
-  margin: 0;
+<<<<<<< HEAD
   max-height: 200px;
   overflow-y: scroll;
   padding-left: 0;
 }
 
+.subHeading {
+  margin-top: 20px;
+=======
+  margin: 0;
+  max-height: 200px;
+  overflow-y: scroll;
+  padding-left: 0;
+>>>>>>> main
+}
+
 .genreTagsContainer {
-  height: 0;
-  opacity: 0;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
   -webkit-transition: opacity 1s ease;
   transition: opacity 1s ease;
 }
 
 .genreTags {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  list-style: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: default;
+          flex-direction: default;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding: 0;
-  width: 100%;
 }
 
 .activeSearch {
   height: auto;
-  visibility: visible;
   opacity: 1;
   overflow: visible;
-  width: 100%;
+  visibility: visible;
 }
 
 .activeSearch.formContainer {
@@ -605,64 +756,54 @@ form {
 }
 
 .genreTag {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border: 5px solid white;
-  border-radius: 50%;
-  color: white;
-  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-size: 2rem;
-  height: 160px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: default;
+          flex-direction: default;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 160px;
+  -ms-flex-wrap: no-wrap;
+      flex-wrap: no-wrap;
+  border: 5px solid white;
+  border-radius: 50%;
+  font-size: 2rem;
+  height: 160px;
   margin: 20px;
+  width: 160px;
 }
 
 .genreTag.rnb:focus, .genreTag.rnb:hover {
   border-color: #6262b4;
-  outline: none;
 }
 
 .genreTag.pop:focus, .genreTag.pop:hover {
   border-color: #fb4fb0;
-  outline: none;
 }
 
 .genreTag.rock:focus, .genreTag.rock:hover {
   border-color: #fe4040;
-  outline: none;
 }
 
 .genreTag.hipHop:focus, .genreTag.hipHop:hover {
   border-color: #f9b13d;
-  outline: none;
 }
 
 .genreTag.kpop:focus, .genreTag.kpop:hover {
   border-color: #53e256;
-  outline: none;
-}
-
-main {
-  display: none;
 }
 
 .bigMain {
-  display: block;
   background-color: #6c6559;
+  display: block;
   min-height: calc(100vh - 150px - 50px);
   padding-top: 40px;
-}
-
-.resultsHeading {
-  text-align: center;
-  margin: 0;
 }
 
 .results {
@@ -674,8 +815,6 @@ main {
       grid-template-rows: repeat(3, 1fr);
   grid-auto-rows: 1fr;
   grid-gap: 20px;
-  list-style: none;
-  margin: 0;
   padding: 40px 0;
 }
 
@@ -683,9 +822,6 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -693,47 +829,43 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border-radius: 10px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: no-wrap;
+      flex-wrap: no-wrap;
+  background-color: #f9f9f9;
   -webkit-box-shadow: 0 2px 5px 0 black;
           box-shadow: 0 2px 5px 0 black;
-  background-color: #f9f9f9;
-  text-align: center;
   padding: 15px;
-  font-family: 'Crimson Text', serif;
-  font-size: 1.5rem;
 }
 
 .results .artist a {
-  font-size: 1rem;
-  text-decoration: none;
-  padding: 10px;
-  margin-top: 10px;
   border: 1px solid black;
   color: #ab2217;
-  border-radius: 3px;
-}
-
-.fa-search {
-  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  text-decoration: none;
 }
 
 footer {
-  background-color: #222;
-  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-footer p {
-  margin: 0;
-  color: white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: default;
+          flex-direction: default;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: no-wrap;
+      flex-wrap: no-wrap;
+  background-color: #222222;
+  height: 50px;
 }
 
 @media (max-width: 1250px) {
@@ -765,12 +897,8 @@ footer p {
   .topPosition .genreTags {
     margin: 0;
   }
+  .topPosition .formContainer,
   .topPosition .genreTagsContainer {
-    opacity: 0;
-    -webkit-transition: opacity .5s .4s;
-    transition: opacity .5s .4s;
-  }
-  .topPosition .formContainer {
     opacity: 0;
     -webkit-transition: opacity .5s .4s;
     transition: opacity .5s .4s;
@@ -831,6 +959,10 @@ footer p {
 }
 
 @media (max-width: 600px) {
+  .bottomHeaderFlexContainer,
+  .search {
+    width: 100%;
+  }
   h1 {
     font-size: calc(2rem + 6vw);
   }
@@ -843,20 +975,18 @@ footer p {
             justify-content: space-between;
   }
   .topHeaderFlexContainer {
-    -ms-flex-negative: 0;
-        flex-shrink: 0;
     -ms-flex-preferred-size: 40%;
         flex-basis: 40%;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
     margin-bottom: 10px;
   }
   .bottomHeaderFlexContainer {
-    width: 100%;
     -ms-flex-preferred-size: 60%;
         flex-basis: 60%;
   }
   .search {
     font-size: 1.5rem;
-    width: 100%;
   }
   .submitButtonText {
     display: none;
@@ -868,8 +998,8 @@ footer p {
     margin-bottom: 20px;
   }
   .genreTag {
-    margin: 10px;
     height: 110px;
+    margin: 10px;
     width: 110px;
   }
   .topPosition .buttonContainer .button {
@@ -877,8 +1007,8 @@ footer p {
     width: 100px;
   }
   .buttonContainer .button {
-    margin: 0 10px;
     font-size: 1.5rem;
+    margin: 0 10px;
   }
   .topPosition.genreTopPosition {
     height: 400px;
@@ -893,11 +1023,8 @@ footer p {
   .results {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-    width: 70%;
     margin: 0 auto;
-  }
-  .results .artist {
-    font-size: 1rem;
+    width: 70%;
   }
   .topPosition.artistTopPosition {
     height: 300px;
@@ -922,7 +1049,8 @@ footer p {
         -ms-flex-direction: row;
             flex-direction: row;
   }
-  .buttonContainer .button {
+  .buttonContainer .button,
+  .results .artist {
     font-size: 1rem;
   }
 }
