@@ -394,12 +394,16 @@ h1,
 
 img {
   display: block;
-  max-width: 100%;
-  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
 }
 
 .imageContainer {
+  max-height: 125px;
   max-width: 250px;
+  overflow: hidden;
   width: 100%;
 }
 

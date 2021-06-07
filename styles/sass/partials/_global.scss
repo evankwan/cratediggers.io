@@ -163,12 +163,14 @@ h1,
 // images
 img {
     display: block;
-    max-width: 100%;
-    width: 100%;
+    object-fit: cover;
+    object-position: center center;
 }
 
 .imageContainer {
+    max-height: 125px;
     max-width: 250px;
+    overflow: hidden;
     width: 100%;
 }
 
