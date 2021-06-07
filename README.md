@@ -2,7 +2,7 @@
 
 A music recommendation app that takes user input, queries the Last.fm API for a matched artist to create a dropdown menu, and takes the user selection to query the Last.fm API to return a list of recommended artists. Each result is passed into the Giphy API to return a Gif of each artist/band in the results page.
 
-This was the second project in Juno College's Web Development Bootcamp, originally built with [I'm an inline-style link](https://github.com/clembrulee, "Clement Sung") (92% final grade).
+This was the second project in Juno College's Web Development Bootcamp, originally built with [Clement Sung](https://github.com/clembrulee, "Clement Sung") (92% final grade).
 
 👷‍♂️ Built using JavaScript, Last.fm API, Giphy API, and SCSS
 
